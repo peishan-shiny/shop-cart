@@ -8,7 +8,8 @@
           <i class="el-icon-menu menu"></i>
         </label>
         <img src="https://i.imgur.com/KoJtvfu.png" class="p-logo" alt="" />
-        <el-link icon="el-icon-search" class="search"></el-link>
+        <!-- <el-link icon="el-icon-search" class="search"></el-link> -->
+        <i class="el-icon-search search"></i>
 
         <div class="category">
           <div class="category-title">

@@ -97,7 +97,7 @@
               v-for="category in categories"
               :key="category.id"
             >
-              <a href="">{{ category.name }}</a>
+              <a href="" class="text-white">{{ category.name }}</a>
             </li>
           </ul>
         </li>
@@ -106,30 +106,30 @@
           優惠活動<span> <i class="el-icon-arrow-down arrow-down"></i></span>
           <ul class="activity-list">
             <li class="second">
-              <a href="">現正優惠</a>
+              <a href="" class="text-white">現正優惠</a>
             </li>
             <li class="second">
-              <a href="">熱銷推薦</a>
+              <a href="" class="text-white">熱銷推薦</a>
             </li>
             <li class="second">
-              <a href="">優惠活動</a>
+              <a href="" class="text-white">優惠活動</a>
             </li>
             <li class="second">
-              <a href="">精選文章</a>
+              <a href="" class="text-white">精選文章</a>
             </li>
             <li class="second">
-              <a href="">新產品</a>
+              <a href="" class="text-white">新產品</a>
             </li>
           </ul>
         </li>
         <li class="first">
-          <a href="">品牌故事</a>
+          <a href="" class="text-white">品牌故事</a>
         </li>
         <li class="first">
-          <a href="">人才招募</a>
+          <a href="" class="text-white">人才招募</a>
         </li>
         <li class="first">
-          <a href="">聯絡我們</a>
+          <a href="" class="text-white">聯絡我們</a>
         </li>
       </ul>
     </div>
@@ -338,9 +338,6 @@ export default {
 </script>
 
 <style>
-a {
-  color: var(--white);
-}
 .footer {
   background-color: var(--main-color);
   padding: 3rem 1.5rem;
@@ -399,6 +396,9 @@ a {
 }
 .footer-text {
   font-size: var(--thr-font-size);
+  color: var(--white);
+}
+.text-white {
   color: var(--white);
 }
 

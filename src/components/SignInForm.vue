@@ -91,7 +91,9 @@
             </div>
             <div class="form-content">
               <el-checkbox v-model="agreeChecked"
-                >我同意<a href="">網站服務條款及隱私政策</a></el-checkbox
+                >我同意<a href="" class="text-main-color"
+                  >網站服務條款及隱私政策</a
+                ></el-checkbox
               >
             </div>
             <div class="form-content">
@@ -168,6 +170,7 @@ export default {
   text-align: center;
   border: 1px solid #f3f1f1;
   margin-bottom: 2rem;
+  color: var(--main-color);
 }
 .choose.active {
   border: unset;
@@ -191,6 +194,11 @@ export default {
   width: unset;
   width: 100%;
   max-width: 300px;
+}
+.text-main-color {
+  color: var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+  padding-bottom: 1px;
 }
 
 @media screen and (max-width: 480px) {
