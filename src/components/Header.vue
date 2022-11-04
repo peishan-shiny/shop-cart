@@ -1,56 +1,80 @@
 <template>
-  <div class="header-util">
-    <!-- 手機版的橫幅fixed -->
-    <div class="phone">
-      <input type="checkbox" class="navbar-toggle" id="navbar-toggle" />
-      <label for="navbar-toggle" class="navbar-toggle-label">
-        <i class="el-icon-menu menu"></i>
-      </label>
-      <img src="https://i.imgur.com/KoJtvfu.png" class="p-logo" alt="" />
-      <el-link icon="el-icon-search" class="search"></el-link>
-    </div>
-    <!-- 網頁版的橫幅fixed -->
-    <el-row type="flex" class="row-bg" justify="end">
-      <el-link type="info" class="header-util-item">登入會員</el-link>
-      <el-link type="info" class="header-util-item">我的會員</el-link>
-      <el-link type="info" class="header-util-item">購物車</el-link>
-      <el-link type="info" class="header-util-item">聯絡我們</el-link>
-      <el-link icon="el-icon-search" class="header-util-item"></el-link>
-    </el-row>
+  <div class="header">
+    <!-- 行動版的橫幅fixed -->
+    <div class="phone-wrap">
+      <div class="phone">
+        <input type="checkbox" class="navbar-toggle" id="navbar-toggle" />
+        <label for="navbar-toggle" class="navbar-toggle-label">
+          <i class="el-icon-menu menu"></i>
+        </label>
+        <img src="https://i.imgur.com/KoJtvfu.png" class="p-logo" alt="" />
+        <el-link icon="el-icon-search" class="search"></el-link>
 
+        <div class="category">
+          <div class="category-title">
+            <el-link
+              type="info"
+              class="category-item"
+              v-for="category in categories"
+              :key="category.id"
+              >{{ category.name }}
+
+              <div class="sort">
+                <el-link
+                  type="info"
+                  class="sort-item"
+                  v-for="sort in category.sorts"
+                  :key="sort.id"
+                  >{{ sort.name }}</el-link
+                >
+              </div>
+            </el-link>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- PC的橫幅fixed -->
+    <div class="header-util">
+      <el-row type="flex" class="row-bg" justify="end">
+        <el-link type="info" class="header-util-item">登入會員</el-link>
+        <el-link type="info" class="header-util-item">我的會員</el-link>
+        <el-link type="info" class="header-util-item">購物車</el-link>
+        <el-link type="info" class="header-util-item">聯絡我們</el-link>
+        <el-link icon="el-icon-search" class="header-util-item"></el-link>
+      </el-row>
+    </div>
+    <!-- PC的橫幅沒有fixed -->
     <div class="navbar">
-      <!-- 網頁版的category沒有fixed -->
-      <!-- 手機版的category有fixed -->
       <div class="nav-wrap">
         <img src="https://i.imgur.com/KoJtvfu.png" class="logo" alt="" />
         <div class="nav">
-          <el-link type="info" class="category-item">會員權益</el-link>
-          <el-link type="info" class="category-item">現正優惠</el-link>
-          <el-link type="info" class="category-item">熱銷推薦</el-link>
-          <el-link type="info" class="category-item">優惠活動</el-link>
-          <el-link type="info" class="category-item">精選文章</el-link>
-          <el-link type="info" class="category-item">新產品</el-link>
+          <el-link type="info" class="nav-item">會員權益</el-link>
+          <el-link type="info" class="nav-item">現正優惠</el-link>
+          <el-link type="info" class="nav-item">熱銷推薦</el-link>
+          <el-link type="info" class="nav-item">優惠活動</el-link>
+          <el-link type="info" class="nav-item">精選文章</el-link>
+          <el-link type="info" class="nav-item">新產品</el-link>
         </div>
       </div>
       <div class="category">
         <div class="category-title">
           <el-link
-            @click.stop.prevent="clickCategory(category.id)"
             type="info"
             class="category-item"
             v-for="category in categories"
             :key="category.id"
-            >{{ category.name }}</el-link
-          >
-        </div>
-        <div class="category-title sort">
-          <el-link
-            type="info"
-            class="category-item"
-            v-for="sort in categorySorts"
-            :key="sort.id"
-            >{{ sort.name }}</el-link
-          >
+            >{{ category.name }}
+
+            <div class="sort">
+              <el-link
+                type="info"
+                class="sort-item"
+                v-for="sort in category.sorts"
+                :key="sort.id"
+                >{{ sort.name }}</el-link
+              >
+            </div>
+          </el-link>
         </div>
       </div>
     </div>
@@ -117,6 +141,10 @@ const dummyData = {
         {
           id: 8,
           name: "眼影",
+        },
+        {
+          id: 9,
+          name: "打亮",
         },
       ],
     },
@@ -198,10 +226,25 @@ const dummyData = {
         },
       ],
     },
+    {
+      id: 6,
+      name: "男士保養",
+      sorts: [
+        {
+          id: 1,
+          name: "全部",
+        },
+        {
+          id: 2,
+          name: "控油洗面乳",
+        },
+        {
+          id: 3,
+          name: "酷涼洗面乳",
+        },
+      ],
+    },
   ],
-
-  // categoryDetail: [全部, 粉底, 粉底液, 氣墊, 蜜粉, 腮紅, 口紅, 眼影],
-  // programNow: [全部, 洗顏組, 保濕組, 修護組, 茶樹, 精油],
 };
 
 export default {
@@ -210,8 +253,6 @@ export default {
   data() {
     return {
       categories: [],
-      category: [],
-      categorySorts: [],
     };
   },
 
@@ -221,26 +262,22 @@ export default {
 
   methods: {
     fetchData() {
-      this.categories = [...this.categories, ...dummyData.categories];
-    },
-    clickCategory(id) {
-      console.log(id);
-      this.category = this.categories.filter((category) => category.id === id);
-      this.categorySorts = this.category[0].sorts;
+      this.categories = [...dummyData.categories];
     },
   },
 };
 </script>
 
 <style scoped>
-.phone {
+.phone-wrap {
   display: none;
 }
 
 .header-util {
+  z-index: 9999;
   width: 100vw;
   position: fixed;
-  background-color: #f3f1f1;
+  background-color: var(--sec-color);
   height: 40px;
 }
 .row-bg {
@@ -250,12 +287,13 @@ export default {
 }
 .header-util-item {
   margin-left: 1rem;
+  font-size: var(--des-font-size);
 }
 .navbar {
   width: 80vw;
   margin: 0 auto;
   position: relative;
-  top: 1rem;
+  top: 4rem;
 }
 .nav-wrap {
   display: flex;
@@ -272,32 +310,51 @@ export default {
 .nav-item {
   margin-left: 1rem;
   margin-bottom: 1rem;
+  font-size: var(--thr-font-size);
 }
 .category {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+}
+.category-title {
+  display: flex;
+  flex-direction: row;
+}
+.category-item {
+  margin-right: 2rem;
+  font-size: var(--thr-font-size);
 }
 .sort {
+  display: flex;
+  flex-direction: column;
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 0.2s ease-out;
-  z-index: 999;
+  z-index: 9999;
   background-color: var(--sec-color);
-  padding: 2rem 1rem;
+  position: absolute;
 }
-.category-title:hover ~ .sort {
+.sort-item {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  white-space: nowrap;
+  font-size: var(--thr-font-size);
+}
+.category-item:hover .sort {
   transform: scale(1, 1);
-}
-.category-item {
-  margin-right: 1rem;
 }
 
 @media screen and (max-width: 480px) {
-  .header-util {
-    background-color: #f3f1f1;
-    height: 50px;
-  }
-  .row-bg {
+  .header-util,
+  .navbar {
     display: none;
+  }
+  .phone-wrap {
+    all: unset;
+    z-index: 9999;
+    width: 100vw;
+    position: fixed;
+    background-color: var(--sec-color);
+    height: 50px;
   }
   .phone {
     width: 90vw;
@@ -319,14 +376,16 @@ export default {
   .search {
     font-size: 35px;
     vertical-align: middle;
+    color: var(--black);
   }
   .logo {
     display: none;
   }
   .navbar {
     all: unset;
+    margin: 0 auto;
     position: relative;
-    top: 0px;
+    top: 50px;
   }
   .nav-wrap {
     all: unset;
@@ -334,24 +393,30 @@ export default {
     box-sizing: border-box;
   }
   .nav {
+    width: 90vw;
+    margin: 0 auto;
     overflow-y: hidden;
     overflow-x: auto;
     white-space: nowrap;
   }
   .nav-item {
     all: unset;
-    margin-right: 1rem;
+    margin: 0 0.5rem;
+    font-size: var(--thr-font-size);
   }
   .category {
     all: unset;
-    display: flex;
-    flex-direction: row;
     width: 60vw;
-    height: 100vh;
-    position: fixed;
+    /* height: 100vh; */
+    position: absolute;
     top: 50px;
     left: 0px;
-    background-color: #f3f1f1;
+    font-size: var(--thr-font-size);
+    background-color: var(--sec-color);
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: transform 0.2s ease-out;
+    box-sizing: border-box;
   }
   .category-title {
     width: 30vw;
@@ -360,8 +425,28 @@ export default {
   }
   .category-item {
     all: unset;
-    padding-left: 1rem;
-    padding-top: 2rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-size: var(--thr-font-size);
+  }
+  .sort {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: transform 0.2s ease-out;
+    background-color: var(--white);
+    position: absolute;
+    left: 30vw;
+    top: 0px;
+    width: 30vw;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .navbar-toggle:checked ~ .category {
+    transform: scale(1, 1);
   }
 }
 </style>

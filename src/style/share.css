@@ -1,6 +1,8 @@
 :root {
   --main-color: #457993;
   --sec-color: #f3f1f1;
+  --black: #888;
+  --white: #fff;
   --main-font-size: 32px;
   --sec-font-size: 24px;
   --thr-font-size: 18px;
