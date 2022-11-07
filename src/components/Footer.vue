@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-inner">
-      <!-- PC版 -->
+      <!-- PC/行動共用區 -->
       <div class="footer-left">
         <h1 class="follow-title">Follow us</h1>
         <div class="follow-icon">
@@ -29,8 +29,9 @@
           </div>
         </div>
       </div>
-
+      <!-- PC版 -->
       <div class="footer-right" v-if="!isDevice">
+        <!-- 產品資訊 -->
         <div class="footer-menu">
           <h1 class="footer-title">產品資訊</h1>
           <div class="footer-item">
@@ -49,6 +50,7 @@
             <a href="" class="footer-text">美妝工具</a>
           </div>
         </div>
+        <!-- 優惠活動 -->
         <div class="footer-menu">
           <h1 class="footer-title">優惠活動</h1>
           <div class="footer-item">
@@ -67,6 +69,7 @@
             <a href="" class="footer-text">新產品</a>
           </div>
         </div>
+        <!-- 關於我們 -->
         <div class="footer-menu">
           <h1 class="footer-title">關於我們</h1>
           <div class="footer-item">
@@ -122,6 +125,7 @@
             </li>
           </ul>
         </li>
+        <!-- 其他 -->
         <li class="first">
           <a href="" class="text-white">品牌故事</a>
         </li>
@@ -337,7 +341,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+* {
+  font-family: "微軟正黑體";
+}
 .footer {
   background-color: var(--main-color);
   padding: 3rem 1.5rem;
@@ -353,6 +360,8 @@ export default {
   align-items: center;
 }
 .follow-title {
+  font-family: "微軟正黑體";
+  letter-spacing: 0.3rem;
   font-size: var(--main-font-size);
   color: var(--white);
 }
@@ -371,6 +380,7 @@ export default {
   margin-right: 1.5rem;
 }
 .info-text {
+  font-family: "微軟正黑體";
   font-size: var(--thr-font-size);
   color: var(--white);
 }
@@ -397,6 +407,9 @@ export default {
 .footer-text {
   font-size: var(--thr-font-size);
   color: var(--white);
+}
+.footer-text:hover {
+  border-bottom: 1px solid var(--white);
 }
 .text-white {
   color: var(--white);

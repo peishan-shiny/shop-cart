@@ -36,7 +36,7 @@
               </button>
             </div>
             <div class="form-content">
-              <a href="">忘記密碼？</a>
+              <a href="" class="text-main-color">忘記密碼？</a>
             </div>
           </div>
           <!-- 註冊 -->
@@ -136,11 +136,14 @@ export default {
 </script>
 
 <style scoped>
+* {
+  font-family: "微軟正黑體";
+}
 .container {
   width: 80vw;
   margin: 0 auto;
   position: relative;
-  top: 200px;
+  top: 150px;
 }
 .title {
   font-size: var(--main-font-size);
@@ -187,7 +190,6 @@ export default {
 .regSubmit {
   width: 100%;
   padding: 1rem 0;
-  border: 0px;
 }
 .gender,
 .birthday {

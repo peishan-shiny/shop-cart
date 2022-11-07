@@ -11,19 +11,19 @@
         <!-- <el-link icon="el-icon-search" class="search"></el-link> -->
         <i class="el-icon-search search"></i>
 
-        <div class="category">
-          <div class="category-title">
+        <div class="p-category">
+          <div class="p-category-title">
             <el-link
               type="info"
-              class="category-item"
+              class="p-category-item"
               v-for="category in categories"
               :key="category.id"
               >{{ category.name }}
 
-              <div class="sort">
+              <div class="p-sort">
                 <el-link
                   type="info"
-                  class="sort-item"
+                  class="p-sort-item"
                   v-for="sort in category.sorts"
                   :key="sort.id"
                   >{{ sort.name }}</el-link
@@ -270,6 +270,9 @@ export default {
 </script>
 
 <style scoped>
+* {
+  font-family: "微軟正黑體";
+}
 .phone-wrap {
   display: none;
 }
@@ -312,6 +315,7 @@ export default {
   margin-left: 1rem;
   margin-bottom: 1rem;
   font-size: var(--thr-font-size);
+  padding-bottom: 0.5rem;
 }
 .category {
   margin-top: 1.5rem;
@@ -346,7 +350,7 @@ export default {
 
 @media screen and (max-width: 480px) {
   .header-util,
-  .navbar {
+  .category {
     display: none;
   }
   .phone-wrap {
@@ -405,48 +409,52 @@ export default {
     margin: 0 0.5rem;
     font-size: var(--thr-font-size);
   }
-  .category {
-    all: unset;
+  .p-category {
     width: 60vw;
-    /* height: 100vh; */
-    position: absolute;
+    position: fixed;
     top: 50px;
     left: 0px;
+    height: 100vh;
     font-size: var(--thr-font-size);
     background-color: var(--sec-color);
     transform: scale(0, 1);
     transform-origin: left;
     transition: transform 0.2s ease-out;
     box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
-  .category-title {
+  .p-category-title {
     width: 30vw;
     display: flex;
     flex-direction: column;
   }
-  .category-item {
-    all: unset;
+  .p-category-item {
     padding: 0.5rem 1rem;
     text-align: center;
     font-size: var(--thr-font-size);
   }
-  .sort {
-    all: unset;
+  .p-sort {
     display: flex;
     flex-direction: column;
     transform: scale(0, 1);
     transform-origin: left;
     transition: transform 0.2s ease-out;
     background-color: var(--white);
-    position: absolute;
+    position: fixed;
     left: 30vw;
     top: 0px;
     width: 30vw;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
+    height: 100vh;
   }
-  .navbar-toggle:checked ~ .category {
+  .p-sort-item {
+    padding: 0.5rem 1rem;
+    font-size: var(--thr-font-size);
+  }
+  .navbar-toggle:checked ~ .p-category {
+    transform: scale(1, 1);
+  }
+  .p-category-item:hover .p-sort {
     transform: scale(1, 1);
   }
 }

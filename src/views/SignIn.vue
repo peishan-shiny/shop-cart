@@ -1,6 +1,6 @@
 <template>
   <div class="sticky-footer">
-    <div class="sticky-contant">
+    <div class="sticky-content">
       <Header />
 
       <SignInForm />
@@ -25,13 +25,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 /* .sticky-footer {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 } */
-.sticky-contant {
+.sticky-content {
   /* min-height: 100vh; */
   padding-bottom: 250px;
 }
