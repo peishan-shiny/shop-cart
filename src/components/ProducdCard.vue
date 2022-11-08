@@ -2,43 +2,45 @@
   <div class="container">
     <section class="section discount">
       <p class="section-title">現正優惠</p>
-      <div class="wrap">
-        <button class="but-left" @click="left">
+      <div class="move-box">
+        <button class="btn-left" @click="left">
           <i class="arrow el-icon-arrow-left"></i>
         </button>
-        <div
-          class="card-list"
-          :style="{ transform: 'translateX(' + currentOffset + 'px)' }"
-        >
-          <!-- 跑for迴圈 -->
+        <div class="wrap" ref="moveWidth">
           <div
-            class="card"
-            v-for="item in products"
-            :key="item.id"
-            :style="{ minWidth: width }"
+            class="card-list"
+            :style="{ transform: 'translateX(' + currentOffset + 'px)' }"
           >
-            <div class="card-image">
-              <a href=""><img :src="item.imgURL" alt="" class="image" /></a>
-            </div>
-            <div class="info">
-              <p class="product-title">{{ item.title }}</p>
-              <div class="discount-descript" v-if="item.discount">
-                <p class="original-price">{{ "NT$" + item.price }}</p>
-                <p class="discount-red">{{ item.discount * 10 + "折" }}</p>
+            <!-- 跑for迴圈 -->
+            <div
+              class="card"
+              v-for="item in products"
+              :key="item.id"
+              :style="{ minWidth: width }"
+            >
+              <div class="card-image">
+                <a href=""><img :src="item.imgURL" alt="" class="image" /></a>
               </div>
-              <p class="price">
-                {{
-                  "NT$" +
-                  (item.discount
-                    ? Math.ceil(item.price * item.discount)
-                    : item.price)
-                }}
-              </p>
+              <div class="info">
+                <p class="product-title">{{ item.title }}</p>
+                <div class="discount-descript" v-if="item.discount">
+                  <p class="original-price">{{ "NT$" + item.price }}</p>
+                  <p class="discount-red">{{ item.discount * 10 + "折" }}</p>
+                </div>
+                <p class="price">
+                  {{
+                    "NT$" +
+                    (item.discount
+                      ? Math.ceil(item.price * item.discount)
+                      : item.price)
+                  }}
+                </p>
+              </div>
+              <button class="quick-view action">快速瀏覽</button>
             </div>
-            <button class="quick-view action">快速瀏覽</button>
           </div>
         </div>
-        <button class="but-right" @click="right">
+        <button class="btn-right" @click="right">
           <i class="arrow el-icon-arrow-right"></i>
         </button>
       </div>
@@ -98,28 +100,30 @@ export default {
   },
   mounted() {
     this.setCardWidth();
-    this.cardList = document.querySelector(".card-list");
-    window.addEventListener("resize", () => {
-      this.currentoffset = 0;
-      this.setcardWidth();
-    });
+    // this.cardList = document.querySelector(".card-list");
+    // window.addEventListener("resize", () => {
+    //   // this.currentoffset = 0;
+    //   // this.setcardWidth();
+    // });
   },
   methods: {
     setCardWidth() {
       const wrap = document.querySelector(".wrap");
       this.wrapWidth = wrap.clientWidth;
       console.log("wrapWidth:", this.wrapWidth);
-      this.width = (this.wrapWidth - 84) / 4 + "px";
+      this.width = this.wrapWidth / 4 + "px";
     },
     right() {
-      console.log(this.currentOffset);
-      if (this.currentOffset <= (-(this.wrapWidth - 84) / 4) * (10 - 6)) return;
-      this.currentOffset -= (this.wrapWidth - 84) / 4;
+      console.log("點擊前", this.currentOffset);
+      if (this.currentOffset <= (-this.wrapWidth / 4) * (10 - 6)) return;
+      this.currentOffset -= this.wrapWidth / 4;
+      console.log("點擊後", this.currentOffset);
     },
     left() {
-      console.log(this.currentOffset);
+      console.log("點擊前", this.currentOffset);
       if (this.currentOffset >= -2) return;
-      this.currentOffset += (this.wrapWidth - 84) / 4;
+      this.currentOffset += this.wrapWidth / 4;
+      console.log("點擊後", this.currentOffset);
     },
   },
 };
@@ -140,18 +144,22 @@ export default {
   color: var(--main-color);
   margin-bottom: 2rem;
 }
-.wrap {
+.move-box {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* overflow: hidden; */
+}
+.wrap {
+  position: relative;
+  overflow: hidden;
 }
 .arrow {
   font-size: 1.5rem;
   color: var(--white);
 }
-.but-left,
-.but-right {
+.btn-left,
+.btn-right {
+  z-index: 999;
   width: 2rem;
   height: 2rem;
   border: unset;
@@ -165,7 +173,7 @@ export default {
   transition: all 0.2s;
 }
 .card {
-  width: 300px;
+  /* width: 300px; */
   margin: 0 1rem;
   position: relative;
 }
@@ -205,8 +213,8 @@ export default {
 .quick-view {
   width: 100%;
   margin: 1rem auto;
-  position: absolute;
-  bottom: -60px;
+  /* position: absolute;
+  bottom: -60px; */
 }
 
 @media screen and (max-width: 480px) {
