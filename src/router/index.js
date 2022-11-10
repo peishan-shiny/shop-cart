@@ -18,14 +18,29 @@ const routes = [
     component: Home
   },
   {
+    path: '/product/:id',
+    name: 'product',
+    component: () => import('../views/Products.vue')
+  },
+  {
+    path: '/products/categories/:id',
+    name: 'products-categories',
+    component: () => import('../views/Products.vue')
+  },
+  {
     path: '/comment',
     name: 'comment',
     component: () => import('../views/CreateComment.vue')
   },
   {
-    path: '/activies',
-    name: 'activies',
-    component: () => import('../views/Activies.vue')
+    path: '/activities',
+    name: 'activities',
+    component: () => import('../views/Activities.vue')
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('../views/Contact.vue')
   },
   {
     path: '*',

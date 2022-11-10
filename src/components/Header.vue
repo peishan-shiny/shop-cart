@@ -14,18 +14,18 @@
         <div class="p-category">
           <div class="p-category-title">
             <el-link
-              type="info"
-              class="p-category-item"
               v-for="category in categories"
               :key="category.id"
+              type="info"
+              class="p-category-item"
               >{{ category.name }}
 
               <div class="p-sort">
                 <el-link
-                  type="info"
-                  class="p-sort-item"
                   v-for="sort in category.sorts"
                   :key="sort.id"
+                  type="info"
+                  class="p-sort-item"
                   >{{ sort.name }}</el-link
                 >
               </div>
@@ -60,18 +60,18 @@
       <div class="category">
         <div class="category-title">
           <el-link
-            type="info"
-            class="category-item"
             v-for="category in categories"
             :key="category.id"
+            type="info"
+            class="category-item"
             >{{ category.name }}
 
             <div class="sort">
               <el-link
-                type="info"
-                class="sort-item"
                 v-for="sort in category.sorts"
                 :key="sort.id"
+                type="info"
+                class="sort-item"
                 >{{ sort.name }}</el-link
               >
             </div>

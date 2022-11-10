@@ -1,34 +1,44 @@
 <template>
   <div class="container">
-    <h1 class="title" v-if="tabActive === 'login'">會員登入</h1>
-    <h1 class="title" v-if="tabActive === 'reg'">註冊會員</h1>
+    <h1 v-if="tabActive === 'login'" class="title">會員登入</h1>
+    <h1 v-if="tabActive === 'reg'" class="title">註冊會員</h1>
     <hr class="title-line" />
-    <form>
+    <form @submit.stop.prevent="handleSumit">
       <div class="form-border">
         <div class="form-inner-top">
           <a
-            href="#/signIn"
-            class="choose"
             :class="[{ active: tabActive === 'reg' }]"
             @click="tabActive = 'reg'"
+            href="#/signIn"
+            class="choose"
             >註冊會員</a
           >
           <a
-            href="#/signIn"
-            class="choose"
             :class="[{ active: tabActive === 'login' }]"
             @click="tabActive = 'login'"
+            href="#/signIn"
+            class="choose"
             >會員登入</a
           >
         </div>
         <div class="form-inner-bottom">
           <!-- 登入 -->
-          <div class="login" v-if="tabActive === 'login'">
+          <div v-if="tabActive === 'login'" class="login">
             <div class="form-content">
-              <el-input v-model="mail" placeholder="電郵"></el-input>
+              <el-input
+                v-model="mail"
+                type="email"
+                placeholder="電郵"
+                required
+              ></el-input>
             </div>
             <div class="form-content">
-              <el-input v-model="password" placeholder="密碼"></el-input>
+              <el-input
+                v-model="password"
+                type="password"
+                placeholder="密碼"
+                required
+              ></el-input>
             </div>
             <div class="form-content">
               <button type="submit" class="action loginSubmit">
@@ -40,23 +50,32 @@
             </div>
           </div>
           <!-- 註冊 -->
-          <div class="register" v-if="tabActive === 'reg'">
+          <div v-if="tabActive === 'reg'" class="register">
             <div class="form-content">
-              <el-input v-model="name" placeholder="用戶名"></el-input>
+              <el-input v-model="name" placeholder="用戶名" required></el-input>
             </div>
             <div class="form-content">
-              <el-input v-model="mail" placeholder="電郵"></el-input>
+              <el-input
+                v-model="mail"
+                type="email"
+                placeholder="電郵"
+                required
+              ></el-input>
             </div>
             <div class="form-content">
               <el-input
                 v-model="password"
+                type="password"
                 placeholder="密碼(至少8個字元)"
+                required
               ></el-input>
             </div>
             <div class="form-content">
               <el-input
                 v-model="passwordAgain"
+                type="password"
                 placeholder="重複登打密碼(至少8個字元)"
+                required
               ></el-input>
             </div>
             <div class="form-content">
@@ -81,16 +100,17 @@
                 placeholder="請選擇生日"
                 class="birthday"
                 style="width: 100%"
+                required
               >
               </el-date-picker>
             </div>
             <div class="form-content">
-              <el-checkbox v-model="newsChecked"
+              <el-checkbox v-model="newsChecked" required
                 >我願意接收 POPO SHOP 的最新消息、優惠等資訊</el-checkbox
               >
             </div>
             <div class="form-content">
-              <el-checkbox v-model="agreeChecked"
+              <el-checkbox v-model="agreeChecked" required
                 >我同意<a href="" class="text-main-color"
                   >網站服務條款及隱私政策</a
                 ></el-checkbox
@@ -107,9 +127,11 @@
 </template>
 
 <script>
+import { Toast } from "../utils/helpers";
+import testAPI from "../apis/test";
+
 export default {
   name: "SignInForm",
-
   data() {
     return {
       name: "",
@@ -122,7 +144,7 @@ export default {
           label: "女生",
         },
         {
-          value: 1,
+          value: 2,
           label: "男生",
         },
       ],
@@ -131,6 +153,66 @@ export default {
       agreeChecked: false,
       tabActive: "login",
     };
+  },
+  created() {
+    this.fetchTestData();
+  },
+  methods: {
+    handleSumit(e) {
+      if (!this.name) {
+        Toast.fire({
+          icon: "warning",
+          title: "請填寫用戶名",
+        });
+        return;
+      } else if (!this.mail) {
+        Toast.fire({
+          icon: "warning",
+          title: "請填寫電子信箱",
+        });
+        return;
+      } else if (!this.password) {
+        Toast.fire({
+          icon: "warning",
+          title: "請填寫密碼",
+        });
+        return;
+      } else if (!this.passwordAgain) {
+        Toast.fire({
+          icon: "warning",
+          title: "請再次填寫密碼",
+        });
+        return;
+      } else if (this.agreeChecked === false) {
+        Toast.fire({
+          icon: "warning",
+          title: "請勾選網站服務條款及隱私政策",
+        });
+        return;
+      }
+
+      //串接API，將資料子層傳給父層
+      console.log(e.target);
+    },
+
+    async fetchTestData() {
+      try {
+        const { data } = await testAPI.getData();
+
+        if (data.status === "error") {
+          throw new Error(data.message);
+        }
+        //拿取資料
+        console.log(data);
+      } catch (error) {
+        //若有錯誤記得將isLoading改成false，才不會是空白頁面
+        this.isLoading = false;
+        Toast.fire({
+          icon: "warning",
+          title: "資料錯誤請稍後再試！",
+        });
+      }
+    },
   },
 };
 </script>

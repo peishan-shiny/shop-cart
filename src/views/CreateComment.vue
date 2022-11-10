@@ -15,7 +15,7 @@ import CommentForm from "../components/CommentForm.vue";
 import Footer from "../components/Footer";
 
 export default {
-  name: "SignIn",
+  name: "CreateComment",
   components: {
     Header,
     CommentForm,

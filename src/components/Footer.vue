@@ -96,9 +96,9 @@
           產品資訊<span> <i class="el-icon-arrow-down arrow-down"></i></span>
           <ul class="activity-list">
             <li
-              class="second"
               v-for="category in categories"
               :key="category.id"
+              class="second"
             >
               <a href="" class="text-white">{{ category.name }}</a>
             </li>
@@ -138,7 +138,7 @@
       </ul>
     </div>
 
-    <div class="footer-bottom" v-if="isDevice">
+    <div v-if="isDevice" class="footer-bottom">
       <div class="footer-bottom-inner">
         <i class="footer-bottom-icon el-icon-location"></i>
         <i class="footer-bottom-icon el-icon-s-home"></i>

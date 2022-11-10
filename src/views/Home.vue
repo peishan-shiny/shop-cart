@@ -9,15 +9,17 @@
             <img
               ref="imgHeight"
               :src="item.url"
-              alt=""
               @load="imgLoad"
+              alt=""
               class="image"
             />
           </el-carousel-item>
         </el-carousel>
       </div>
 
-      <ProducdCard />
+      <ProducdCardList />
+
+      <ProducdCardTwo />
     </div>
 
     <Footer class="sticky-bottom"> </Footer>
@@ -25,17 +27,19 @@
 </template>
 
 
-// <script>
+<script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer";
-import ProducdCard from "../components/ProducdCard";
+import ProducdCardList from "../components/ProducdCardList";
+import ProducdCardTwo from "../components/ProducdCardTwo";
 
 export default {
-  name: "SignIn",
+  name: "Home",
   components: {
     Header,
     Footer,
-    ProducdCard,
+    ProducdCardList,
+    ProducdCardTwo,
   },
   data() {
     return {
