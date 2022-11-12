@@ -12,7 +12,7 @@
 .action {
   color: white;
   background: #457993;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   display: inline-block;
   font-size: 1rem;
   padding: 0.25rem 1rem;
@@ -32,7 +32,7 @@
   border: 1px solid #457993;
   color: #457993;
   background: white;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   display: inline-block;
   font-size: 1rem;
   padding: 0.25rem 1rem;

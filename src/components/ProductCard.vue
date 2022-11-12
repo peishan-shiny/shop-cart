@@ -1,39 +1,29 @@
 <template>
   <div class="container">
-    <section class="section">
-      <p class="section-title">現正優惠</p>
-      <slick :options="slickOptions">
-        <div v-for="item in products" :key="item.id" class="card">
-          <div class="card-image">
-            <a href=""><img :src="item.imgURL" alt="" class="image" /></a>
-          </div>
-          <div class="info">
-            <p class="product-title">{{ item.title }}</p>
-            <div v-if="item.discount" class="discount-descript">
-              <p class="original-price">{{ "NT$" + item.price }}</p>
-              <p class="discount-red">{{ item.discount * 10 + "折" }}</p>
-            </div>
-            <div v-else style="height: 32px"></div>
-            <p class="price">
-              {{
-                "NT$" +
-                (item.discount
-                  ? Math.ceil(item.price * item.discount)
-                  : item.price)
-              }}
-            </p>
-            <button class="quick-view action">快速瀏覽</button>
-          </div>
+    <div v-for="item in products" :key="item.id" class="card">
+      <div class="card-image">
+        <a href=""><img :src="item.imgURL" alt="" class="image" /></a>
+      </div>
+      <div class="info">
+        <p class="product-title">{{ item.title }}</p>
+        <div v-if="item.discount" class="discount-descript">
+          <p class="original-price">{{ "NT$" + item.price }}</p>
+          <p class="discount-red">{{ item.discount * 10 + "折" }}</p>
         </div>
-      </slick>
-    </section>
+        <div v-else style="height: 32px"></div>
+        <p class="price">
+          {{
+            "NT$" +
+            (item.discount ? Math.ceil(item.price * item.discount) : item.price)
+          }}
+        </p>
+        <button class="quick-view action">快速瀏覽</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Slick from "vue-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 const dummyData = {
   products: [
     {
@@ -73,41 +63,10 @@ const dummyData = {
 };
 
 export default {
-  name: "ProducdCardList",
-  components: { Slick },
-
+  name: "ProducdCart",
   data() {
     return {
       products: dummyData.products,
-      slickOptions: {
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 1000,
-        responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1,
-            },
-          },
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-            },
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-            },
-          },
-        ],
-      },
     };
   },
 };
@@ -124,19 +83,6 @@ export default {
   margin: 0 auto;
   position: relative;
   top: 150px;
-}
-.section {
-  width: 80vw;
-  margin: 0 auto;
-}
-.section-title {
-  font-size: var(--main-font-size);
-  color: var(--main-color);
-  margin-bottom: 2rem;
-}
-.slick-slider {
-  display: flex;
-  flex-direction: row;
 }
 .card {
   padding-bottom: 5rem;

@@ -1,29 +1,28 @@
 <template>
   <div class="container">
-    <section class="section discount">
+    <section class="section">
       <p class="section-title">現正優惠</p>
       <slick :options="slickOptions">
         <div v-for="item in products" :key="item.id" class="card">
-          <div class="card-content">
-            <div class="card-image">
-              <a href=""><img :src="item.imgURL" alt="" class="image" /></a>
+          <div class="card-image">
+            <a href=""><img :src="item.imgURL" alt="" class="image" /></a>
+          </div>
+          <div class="info">
+            <p class="product-title">{{ item.title }}</p>
+            <div v-if="item.discount" class="discount-descript">
+              <p class="original-price">{{ "NT$" + item.price }}</p>
+              <p class="discount-red">{{ item.discount * 10 + "折" }}</p>
             </div>
-            <div class="info">
-              <p class="product-title">{{ item.title }}</p>
-              <div v-if="item.discount" class="discount-descript">
-                <p class="original-price">{{ "NT$" + item.price }}</p>
-                <p class="discount-red">{{ item.discount * 10 + "折" }}</p>
-              </div>
-              <div v-else style="height: 40px"></div>
-              <p class="price">
-                {{
-                  "NT$" +
-                  (item.discount
-                    ? Math.ceil(item.price * item.discount)
-                    : item.price)
-                }}
-              </p>
-            </div>
+            <div v-else style="height: 32px"></div>
+            <p class="price">
+              {{
+                "NT$" +
+                (item.discount
+                  ? Math.ceil(item.price * item.discount)
+                  : item.price)
+              }}
+            </p>
+            <button class="quick-view action">快速瀏覽</button>
           </div>
         </div>
       </slick>
@@ -74,22 +73,40 @@ const dummyData = {
 };
 
 export default {
-  name: "ProducdCardTwo",
+  name: "ProducdCartList",
   components: { Slick },
 
   data() {
     return {
       products: dummyData.products,
       slickOptions: {
-        rows: 3,
-        slidesToShow: 1,
+        slidesToShow: 4,
         slidesToScroll: 1,
-        infinite: true,
-        arrows: false,
-        cssEase: "linear",
-        dots: true,
         autoplay: true,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 3000,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+            },
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+            },
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+        ],
       },
     };
   },
@@ -98,14 +115,15 @@ export default {
 
 <style scoped>
 * {
+  box-sizing: border-box;
   font-family: "微軟正黑體";
 }
 .container {
+  /* width: 80vw; */
   padding: 2rem 0;
   margin: 0 auto;
   position: relative;
   top: 150px;
-  background: var(--sec-color);
 }
 .section {
   width: 80vw;
@@ -116,21 +134,24 @@ export default {
   color: var(--main-color);
   margin-bottom: 2rem;
 }
-.card-content {
+.slick-slider {
   display: flex;
   flex-direction: row;
-  padding: 1rem 0;
+}
+.card {
+  padding-bottom: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .image {
-  height: 150px;
+  width: 100%;
 }
 .info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  line-height: 2.5rem;
+  line-height: 2rem;
   position: relative;
-  margin-left: 1rem;
 }
 .original-price {
   text-decoration: line-through;
@@ -144,8 +165,8 @@ export default {
   border-radius: 10px;
   background: rgb(215, 10, 10);
   color: var(--white);
-  margin-left: 1rem;
-  padding: 0 0.5rem;
+  margin-left: 2rem;
+  padding: 0 1rem;
   font-size: var(--thr-font-size);
 }
 .product-title {
@@ -155,5 +176,20 @@ export default {
 }
 .price {
   font-size: var(--sec-font-size);
+}
+.quick-view {
+  width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  top: 6.5rem;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 90vw;
+    margin: 0 auto;
+    position: relative;
+    top: 100px;
+  }
 }
 </style>

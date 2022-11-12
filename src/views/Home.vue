@@ -17,9 +17,9 @@
         </el-carousel>
       </div>
 
-      <ProducdCardList />
+      <ProductCardList />
 
-      <ProducdCardTwo />
+      <ProductCardTwo />
     </div>
 
     <Footer class="sticky-bottom"> </Footer>
@@ -30,16 +30,16 @@
 <script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer";
-import ProducdCardList from "../components/ProducdCardList";
-import ProducdCardTwo from "../components/ProducdCardTwo";
+import ProductCardList from "../components/ProductCardList";
+import ProductCardTwo from "../components/ProductCardTwo";
 
 export default {
   name: "Home",
   components: {
     Header,
     Footer,
-    ProducdCardList,
-    ProducdCardTwo,
+    ProductCardList,
+    ProductCardTwo,
   },
   data() {
     return {

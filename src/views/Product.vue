@@ -4,7 +4,8 @@
       <Header />
 
       <div class="container">
-        <ProductDetail />
+        <ProductDetail :initialProduct="product" />
+        <ProductDetailTwo :initialProduct="product" />
       </div>
     </div>
     <Footer class="sticky-bottom"> </Footer>
@@ -15,81 +16,61 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer";
 import ProductDetail from "../components/ProductDetail";
+import ProductDetailTwo from "../components/ProductDetailTwo";
 
 const dummyData = {
-  id: 2,
-  name: "彩妝系列",
-  sorts: [
+  id: 1,
+  name: "超服貼輕透粉底",
+  price: 1080,
+  discount: 0.5,
+  imgURL: require("../assets/images/product-01.jpg"),
+  shot_des:
+    "超輕薄粉體配方，透過彈性網狀層均勻沾附在粉撲，使粉體無重力完美服貼肌膚。",
+  format: [
     {
       id: 1,
-      name: "全部",
-      products: [
-        {
-          id: 1,
-          title: "超服貼輕透粉底",
-          price: 1080,
-          discount: 0.5,
-          imgURL: require("../assets/images/product-01.jpg"),
-        },
-        {
-          id: 2,
-          title: "楊澄淋代言款",
-          price: 1980,
-          imgURL: require("../assets/images/product-02.png"),
-        },
-        {
-          id: 3,
-          title: "露營攜帶組",
-          price: 690,
-          discount: 0.95,
-          imgURL: require("../assets/images/product-03.png"),
-        },
-        {
-          id: 4,
-          title: "小資族保養系列",
-          price: 1580,
-          discount: 0.7,
-          imgURL: require("../assets/images/product-04.png"),
-        },
-        {
-          id: 5,
-          title: "男士清潔洗面乳",
-          price: 590,
-          imgURL: require("../assets/images/product-05.png"),
-        },
-      ],
+      name: "N1",
     },
     {
       id: 2,
-      name: "粉底",
+      name: "N2",
     },
     {
       id: 3,
-      name: "粉底液",
+      name: "N3",
     },
     {
       id: 4,
-      name: "氣墊",
+      name: "S1",
     },
     {
-      id: 5,
-      name: "蜜粉",
+      id: 2,
+      name: "S2",
+    },
+  ],
+  directions: "1.均勻不結塊的半霧面妝容。2.高水分配方帶來的涼感。",
+  use: "1.基礎保養後使用。2.使用內附智慧型粉撲沾取適量輕拍於臉部, 以輕壓方式由臉部中央向外均勻塗抹。",
+  details: [
+    {
+      id: 1,
+      title: "商品",
+      content: "超服貼輕透粉底",
     },
     {
-      id: 6,
-      name: "腮紅",
+      id: 2,
+      title: "容量",
+      content: "15g",
     },
     {
-      id: 7,
-      name: "口紅",
+      id: 3,
+      title: "製造地",
+      content: "台灣",
     },
     {
-      id: 8,
-      name: "眼影",
-    },
-    {
-      id: 9,
-      name: "打亮",
+      id: 4,
+      title: "注意事項",
+      content:
+        "1.使用後皮膚若有異狀請立即停用。2.使用後請密封瓶蓋。3.請避免使用於傷口、紅腫及濕疹等皮膚異常部位。",
     },
   ],
 };
@@ -100,10 +81,11 @@ export default {
     Header,
     Footer,
     ProductDetail,
+    ProductDetailTwo,
   },
   data() {
     return {
-      category: {},
+      product: {},
     };
   },
   created() {
@@ -112,7 +94,7 @@ export default {
 
   methods: {
     fetchData() {
-      this.category = dummyData;
+      this.product = dummyData;
     },
   },
 };
@@ -127,14 +109,14 @@ export default {
   width: 80vw;
   margin: 0 auto;
   position: relative;
-  top: 150px;
+  top: 50px;
 }
 @media screen and (max-width: 480px) {
   .container {
     width: 90vw;
     margin: 0 auto;
     position: relative;
-    top: 100px;
+    top: 25px;
   }
 }
 </style>
