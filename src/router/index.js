@@ -13,9 +13,19 @@ const routes = [
     component: SignIn
   },
   {
+    path: '/user',
+    name: 'user',
+    component: () => import('../views/User.vue')
+  },
+  {
     path: '/home',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: () => import('../views/Order.vue')
   },
   {
     path: '/product/:id',

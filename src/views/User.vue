@@ -4,11 +4,11 @@
       <Header />
 
       <div class="container">
-        <h1 class="title">精選文章</h1>
+        <h1 class="title">我的會員帳戶</h1>
         <hr class="title-line" />
         <div class="area">
-          <ArticleList class="left" />
-          <ArticleMain class="right" />
+          <UserList class="left" />
+          <UserMain class="right" />
         </div>
       </div>
     </div>
@@ -20,16 +20,16 @@
 <script>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer";
-import ArticleList from "../components/ArticleList";
-import ArticleMain from "../components/ArticleMain";
+import UserList from "../components/UserList";
+import UserMain from "../components/UserMain";
 
 export default {
-  name: "Articles",
+  name: "User",
   components: {
     Header,
     Footer,
-    ArticleList,
-    ArticleMain,
+    UserList,
+    UserMain,
   },
   data() {
     return {};
@@ -59,6 +59,9 @@ export default {
   display: flex;
   flex-direction: row;
   margin: 2rem 0;
+}
+.right {
+  flex: 1;
 }
 
 @media screen and (max-width: 480px) {

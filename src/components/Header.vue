@@ -39,11 +39,17 @@
       <el-row type="flex" class="row-bg" justify="end">
         <el-link type="info" class="header-util-item">登入會員</el-link>
         <el-link type="info" class="header-util-item">我的會員</el-link>
-        <el-link type="info" class="header-util-item">購物車</el-link>
+        <el-link type="info" class="header-util-item" @click="drawer = true"
+          >購物車</el-link
+        >
         <el-link type="info" class="header-util-item">聯絡我們</el-link>
         <el-link icon="el-icon-search" class="header-util-item"></el-link>
       </el-row>
     </div>
+    <!-- drawer -->
+    <el-drawer title="我是訂單" :visible.sync="drawer" :size="drawerWidth">
+      <QuickOrder :show.sync="drawer" />
+    </el-drawer>
     <!-- PC的橫幅沒有fixed -->
     <div class="navbar">
       <div class="nav-wrap">
@@ -248,20 +254,41 @@ const dummyData = {
   ],
 };
 
+import QuickOrder from "./QuickOrder.vue";
+
 export default {
   name: "Header",
-
+  components: {
+    QuickOrder,
+  },
   data() {
     return {
+      isDevice: false,
       categories: [],
+      drawer: false,
     };
   },
-
+  computed: {
+    drawerWidth() {
+      if (this.isDevice) {
+        return "100%";
+      }
+      return "60%";
+    },
+  },
   created() {
+    this.isMobile();
     this.fetchData();
+    window.addEventListener("resize", this.isMobile);
   },
 
   methods: {
+    isMobile() {
+      const result = window.matchMedia("(max-width: 768px)").matches;
+      console.log(result);
+      this.isDevice = result;
+      return result;
+    },
     fetchData() {
       this.categories = [...dummyData.categories];
     },

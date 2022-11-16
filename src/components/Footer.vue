@@ -326,11 +326,12 @@ export default {
     //matches，回傳 boolean值
     this.isMobile();
     this.fetchData();
+    window.addEventListener("resize", this.isMobile);
   },
   methods: {
     // 新增判斷方法
     isMobile() {
-      const result = window.matchMedia("(max-width: 480px)").matches;
+      const result = window.matchMedia("(max-width: 768px)").matches;
       console.log(result);
       this.isDevice = result;
     },
@@ -415,7 +416,7 @@ export default {
   color: var(--white);
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .footer {
     background-color: var(--main-color);
     padding: 0 0;

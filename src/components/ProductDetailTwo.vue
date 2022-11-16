@@ -34,17 +34,15 @@
         </el-table>
       </div>
       <!-- 心得感想 -->
-      <div class="area">
-        <div class="area" v-if="isAction === 'impression'">
-          <el-table :data="tableData" stripe>
-            <el-table-column prop="user" label="留言人"> </el-table-column>
-            <el-table-column prop="score" label="評分" min-width="150px">
-              <el-rate v-model="value"></el-rate>
-            </el-table-column>
-            <el-table-column prop="content" label="內文"> </el-table-column>
-            <el-table-column prop="date" label="留言時機"> </el-table-column>
-          </el-table>
-        </div>
+      <div class="area" v-if="isAction === 'impression'">
+        <el-table :data="tableData" stripe>
+          <el-table-column prop="user" label="留言人"> </el-table-column>
+          <el-table-column prop="score" label="評分" min-width="150px">
+            <el-rate v-model="value"></el-rate>
+          </el-table-column>
+          <el-table-column prop="content" label="內文"> </el-table-column>
+          <el-table-column prop="date" label="留言時間"> </el-table-column>
+        </el-table>
       </div>
       <!-- 配送資訊 -->
       <div class="area delivery" v-if="isAction === 'delivery'">
