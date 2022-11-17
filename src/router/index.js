@@ -38,6 +38,11 @@ const routes = [
     component: () => import('../views/Products.vue')
   },
   {
+    path: '/story',
+    name: 'story',
+    component: () => import('../views/Story.vue')
+  },
+  {
     path: '/comment',
     name: 'comment',
     component: () => import('../views/CreateComment.vue')
@@ -56,6 +61,11 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: () => import('../views/Contact.vue')
+  },
+  {
+    path: '/store',
+    name: 'store',
+    component: () => import('../views/Store.vue')
   },
   {
     path: '*',

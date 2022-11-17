@@ -138,6 +138,7 @@ export default {
 }
 .container {
   width: 80vw;
+  max-width: 1440px;
   margin: 0 auto;
   position: relative;
   top: 150px;

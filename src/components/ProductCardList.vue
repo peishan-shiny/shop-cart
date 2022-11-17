@@ -127,6 +127,7 @@ export default {
 }
 .section {
   width: 80vw;
+  max-width: 1440px;
   margin: 0 auto;
 }
 .section-title {

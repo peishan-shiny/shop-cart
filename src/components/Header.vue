@@ -48,6 +48,13 @@
     </div>
     <!-- drawer -->
     <el-drawer title="我是訂單" :visible.sync="drawer" :size="drawerWidth">
+      <div class="drawerTop">
+        <el-page-header @back="drawer = false"> </el-page-header>
+        <el-badge :value="2" :max="20" class="drawerItem">
+          <i class="el-icon-shopping-cart-2 icon-cart"></i>
+        </el-badge>
+      </div>
+
       <QuickOrder :show.sync="drawer" />
     </el-drawer>
     <!-- PC的橫幅沒有fixed -->
@@ -281,7 +288,6 @@ export default {
     this.fetchData();
     window.addEventListener("resize", this.isMobile);
   },
-
   methods: {
     isMobile() {
       const result = window.matchMedia("(max-width: 768px)").matches;
@@ -313,6 +319,7 @@ export default {
 }
 .row-bg {
   width: 80vw;
+  max-width: 1440px;
   margin: 0 auto;
   line-height: 40px;
 }
@@ -322,6 +329,7 @@ export default {
 }
 .navbar {
   width: 80vw;
+  max-width: 1440px;
   margin: 0 auto;
   position: relative;
   top: 4rem;
@@ -373,6 +381,25 @@ export default {
 }
 .category-item:hover .sort {
   transform: scale(1, 1);
+}
+
+/* drawer */
+.drawerTop {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--black);
+}
+.drawerItem {
+  margin-top: 10px;
+  margin-right: 40px;
+}
+.icon-cart {
+  font-size: 35px;
 }
 
 @media screen and (max-width: 480px) {

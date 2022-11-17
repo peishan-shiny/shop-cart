@@ -44,6 +44,7 @@ export default {
 }
 .container {
   width: 80vw;
+  max-width: 1440px;
   margin: 0 auto;
   position: relative;
   top: 150px;
@@ -61,7 +62,7 @@ export default {
   margin: 2rem 0;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .container {
     width: 90vw;
     margin: 0 auto;

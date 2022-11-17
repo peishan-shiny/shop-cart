@@ -1,14 +1,5 @@
 <template>
   <div class="quick-order">
-    <!-- 頂部 -->
-    <div class="top">
-      <el-page-header @back="goBack"> </el-page-header>
-      <el-badge :value="2" :max="20" class="item">
-        <i class="el-icon-shopping-cart-2 icon-cart"></i>
-        <!-- <el-button size="small">訂購項目</el-button> -->
-      </el-badge>
-    </div>
-
     <!-- 訂購項目列表 -->
     <div class="list">
       <!-- content跑for迴圈 -->
@@ -54,12 +45,7 @@ export default {
       num: 1,
     };
   },
-  methods: {
-    goBack() {
-      console.log("go back");
-      return history.back();
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -67,21 +53,6 @@ export default {
 .quick-order {
   width: 90%;
   margin: 0 auto;
-}
-.top {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--black);
-}
-.item {
-  margin-top: 10px;
-  margin-right: 40px;
-}
-.icon-cart {
-  font-size: 35px;
 }
 /* 訂購項目列表 */
 .content {

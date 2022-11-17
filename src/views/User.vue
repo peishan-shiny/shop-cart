@@ -6,6 +6,7 @@
       <div class="container">
         <h1 class="title">我的會員帳戶</h1>
         <hr class="title-line" />
+        <Cart />
         <div class="area">
           <UserList class="left" />
           <UserMain class="right" />
@@ -22,6 +23,7 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer";
 import UserList from "../components/UserList";
 import UserMain from "../components/UserMain";
+import Cart from "../components/Cart";
 
 export default {
   name: "User",
@@ -30,6 +32,7 @@ export default {
     Footer,
     UserList,
     UserMain,
+    Cart,
   },
   data() {
     return {};
@@ -44,6 +47,7 @@ export default {
 }
 .container {
   width: 80vw;
+  max-width: 1440px;
   margin: 0 auto;
   position: relative;
   top: 150px;
@@ -59,9 +63,6 @@ export default {
   display: flex;
   flex-direction: row;
   margin: 2rem 0;
-}
-.right {
-  flex: 1;
 }
 
 @media screen and (max-width: 480px) {

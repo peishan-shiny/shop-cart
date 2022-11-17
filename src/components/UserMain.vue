@@ -10,6 +10,21 @@
     <!-- 修改會員資料 -->
     <div class="area">
       <p class="title">管理會員資訊</p>
+      <form @submit.stop.prevent="handleSumit">
+        <div class="revise-area">
+          <label for="comment" class="text-style">電子信箱</label>
+          <el-input
+            v-model="email"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="abc123456@gmail.com"
+            required
+          >
+          </el-input>
+        </div>
+        <button type="submit" class="action">儲存</button>
+      </form>
     </div>
     <!-- 歷史訂單 -->
     <div class="area">
@@ -38,6 +53,7 @@ export default {
   data() {
     return {
       imgURL: require("../assets/images/article.jpg"),
+      email: "",
       isAction: false,
       tableData: [
         {
@@ -74,20 +90,43 @@ export default {
   font-size: var(--sec-font-size);
   color: var(--main-color);
 }
+/* 會員資訊 */
 .descript {
   padding-left: 2rem;
   padding-top: 1rem;
 }
 .member {
   color: var(--black);
-  /* border-bottom: 1px solid var(--black); */
   text-decoration-line: underline;
   text-underline-offset: 0.5rem;
 }
+/* 修改會員資料 */
+.revise-area {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+.text-style {
+  min-width: 150px;
+  padding-right: 1rem;
+  font-size: var(--thr-font-size);
+  color: var(--black);
+  white-space: nowrap;
+}
+/* 心得回顧 */
 
 @media screen and (max-width: 480px) {
   .right {
     margin-left: 0rem;
+  }
+  .revise-area {
+    display: flex;
+    flex-direction: column;
+  }
+  .text-style {
+    all: unset;
+    font-size: var(--sec-font-size);
+    margin-bottom: 1rem;
   }
 }
 </style>

@@ -53,6 +53,7 @@ export default {
 <style scoped>
 .container {
   width: 80vw;
+  max-width: 1440px;
   margin: 0 auto;
   position: relative;
   top: 150px;

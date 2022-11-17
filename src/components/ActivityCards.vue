@@ -46,6 +46,7 @@ export default {
 }
 .container {
   width: 80vw;
+  max-width: 1440px;
   margin: 0 auto;
   position: relative;
   top: 150px;
@@ -89,7 +90,7 @@ export default {
   border: 0.5px solid var(--black);
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .container {
     width: 90vw;
     margin: 0 auto;
@@ -104,8 +105,9 @@ export default {
     margin: 2rem 0;
   }
   .activity-card {
-    width: 100%;
-    padding: 1rem 0;
+    width: 90%;
+    padding: 1rem 1rem;
+    margin: 1rem 0;
   }
 }
 </style>

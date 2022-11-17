@@ -108,6 +108,7 @@ export default {
 <style scoped>
 .container {
   width: 80vw;
+  max-width: 1440px;
   margin: 0 auto;
   position: relative;
   top: 150px;
@@ -129,6 +130,7 @@ export default {
   width: 150px;
   padding-right: 1rem;
   font-size: var(--sec-font-size);
+  color: var(--black);
   white-space: nowrap;
 }
 .contact-btn {
