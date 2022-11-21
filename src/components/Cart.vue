@@ -17,9 +17,9 @@ export default {
 
 <style scoped>
 /* >480px 需要隱藏嗎? */
-/* .cart {
+.cart {
   display: none;
-} */
+}
 @media screen and (max-width: 480px) {
   .cart {
     font-size: 35px;

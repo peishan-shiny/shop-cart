@@ -43,6 +43,14 @@
           <el-table-column prop="content" label="內文"> </el-table-column>
           <el-table-column prop="date" label="留言時間"> </el-table-column>
         </el-table>
+        <br />
+        <button
+          type="button"
+          class="btn-choose action-border"
+          @click="toComment"
+        >
+          寫評論
+        </button>
       </div>
       <!-- 配送資訊 -->
       <div class="area delivery" v-if="isAction === 'delivery'">
@@ -100,7 +108,11 @@ export default {
       value: 5,
     };
   },
-  methods: {},
+  methods: {
+    toComment() {
+      this.$router.push("/comment");
+    },
+  },
 };
 </script>
 

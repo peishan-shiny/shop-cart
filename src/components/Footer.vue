@@ -5,14 +5,14 @@
       <div class="footer-left">
         <h1 class="follow-title">Follow us</h1>
         <div class="follow-icon">
-          <a href="">
+          <a href="https://www.facebook.com/">
             <img
               src="https://i.imgur.com/ON0EtSl.png"
               alt=""
               class="icon fb-icon"
             />
           </a>
-          <a href="">
+          <a href="https://store.line.me/">
             <img
               src="https://i.imgur.com/7Ildo3x.png"
               alt=""
@@ -23,7 +23,9 @@
         <div class="info">
           <img src="https://i.imgur.com/PJguFLx.png" alt="" class="logo" />
           <div class="info-inner">
-            <p><a href="" class="info-text">服務條款及隱私政策</a></p>
+            <router-link to="/privacy/policy" class="info-text"
+              >服務條款及隱私政策</router-link
+            >
             <hr />
             <p class="info-text">© 2022 POPO SHOP</p>
           </div>
@@ -35,57 +37,65 @@
         <div class="footer-menu">
           <h1 class="footer-title">產品資訊</h1>
           <div class="footer-item">
-            <a href="" class="footer-text">保養系列</a>
+            <router-link to="#" class="footer-text">保養系列</router-link>
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">彩妝系列</a>
+            <router-link to="#" class="footer-text">彩妝系列</router-link>
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">香氛系列</a>
+            <router-link to="#" class="footer-text">香氛系列</router-link>
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">身體髮品</a>
+            <router-link to="#" class="footer-text">身體髮品</router-link>
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">美妝工具</a>
+            <router-link to="#" class="footer-text">美妝工具</router-link>
           </div>
         </div>
         <!-- 優惠活動 -->
         <div class="footer-menu">
           <h1 class="footer-title">優惠活動</h1>
           <div class="footer-item">
-            <a href="" class="footer-text">現正優惠</a>
+            <router-link to="#" class="footer-text">現正優惠</router-link>
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">熱銷推薦</a>
+            <router-link to="#" class="footer-text">熱銷推薦</router-link>
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">優惠活動</a>
+            <router-link to="/activities" class="footer-text"
+              >優惠活動</router-link
+            >
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">精選文章</a>
+            <router-link to="/articles" class="footer-text"
+              >精選文章</router-link
+            >
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">新產品</a>
+            <router-link to="#" class="footer-text">新產品</router-link>
           </div>
         </div>
         <!-- 關於我們 -->
         <div class="footer-menu">
           <h1 class="footer-title">關於我們</h1>
           <div class="footer-item">
-            <a href="" class="footer-text">會員權益</a>
+            <router-link to="#" class="footer-text">會員權益</router-link>
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">品牌故事</a>
+            <router-link to="/story" class="footer-text">品牌故事</router-link>
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">門市資訊</a>
+            <router-link to="/store" class="footer-text">門市資訊</router-link>
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">人才招募</a>
+            <a href="https://www.104.com.tw/jobs/main/" class="footer-text"
+              >人才招募</a
+            >
           </div>
           <div class="footer-item">
-            <a href="" class="footer-text">聯絡我們</a>
+            <router-link to="/contact" class="footer-text"
+              >聯絡我們</router-link
+            >
           </div>
         </div>
       </div>
@@ -109,40 +119,50 @@
           優惠活動<span> <i class="el-icon-arrow-down arrow-down"></i></span>
           <ul class="activity-list">
             <li class="second">
-              <a href="" class="text-white">現正優惠</a>
+              <router-link to="#" class="text-white">現正優惠</router-link>
             </li>
             <li class="second">
-              <a href="" class="text-white">熱銷推薦</a>
+              <router-link to="#" class="text-white">熱銷推薦</router-link>
             </li>
             <li class="second">
-              <a href="" class="text-white">優惠活動</a>
+              <router-link to="/activities" class="text-white"
+                >優惠活動</router-link
+              >
             </li>
             <li class="second">
-              <a href="" class="text-white">精選文章</a>
+              <router-link to="/articles" class="text-white"
+                >精選文章</router-link
+              >
             </li>
             <li class="second">
-              <a href="" class="text-white">新產品</a>
+              <router-link to="#" class="text-white">新產品</router-link>
             </li>
           </ul>
         </li>
         <!-- 其他 -->
         <li class="first">
-          <a href="" class="text-white">品牌故事</a>
+          <router-link to="/story" class="text-white">品牌故事</router-link>
         </li>
         <li class="first">
-          <a href="" class="text-white">人才招募</a>
+          <router-link to="#" class="text-white">人才招募</router-link>
         </li>
         <li class="first">
-          <a href="" class="text-white">聯絡我們</a>
+          <router-link to="/contact" class="text-white">聯絡我們</router-link>
         </li>
       </ul>
     </div>
 
     <div v-if="isDevice" class="footer-bottom">
       <div class="footer-bottom-inner">
-        <i class="footer-bottom-icon el-icon-location"></i>
-        <i class="footer-bottom-icon el-icon-s-home"></i>
-        <i class="footer-bottom-icon el-icon-user-solid"></i>
+        <router-link to="/store" class="text-white"
+          ><i class="footer-bottom-icon el-icon-location"></i
+        ></router-link>
+        <router-link to="/home" class="text-white"
+          ><i class="footer-bottom-icon el-icon-s-home"></i
+        ></router-link>
+        <router-link to="/user" class="text-white"
+          ><i class="footer-bottom-icon el-icon-user-solid"></i
+        ></router-link>
       </div>
     </div>
   </footer>

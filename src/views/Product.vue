@@ -44,7 +44,7 @@ const dummyData = {
       name: "S1",
     },
     {
-      id: 2,
+      id: 5,
       name: "S2",
     },
   ],
@@ -117,7 +117,7 @@ export default {
     width: 90vw;
     margin: 0 auto;
     position: relative;
-    top: 25px;
+    top: 30px;
   }
 }
 </style>

@@ -6,7 +6,7 @@
       <div class="content">
         <img :src="imgURL" alt="" class="img" />
         <div class="descript">
-          <i class="el-icon-close delete"></i>
+          <i class="el-icon-close delete" @click="deleteItem"></i>
           <p class="name">名稱</p>
           <p class="format">規格</p>
           <el-input-number
@@ -25,14 +25,18 @@
 
     <!-- 底部 -->
     <div>
-      <i class="el-icon-delete-solid"><span>清空購物車</span></i>
+      <i class="el-icon-delete-solid clear" @click="clearCart"
+        ><span>清空購物車</span></i
+      >
       <div class="total">
         <p class="total-number">總金額</p>
         <p class="total-number">NT$1080</p>
       </div>
     </div>
 
-    <button type="button" class="btn-order action">訂購</button>
+    <button type="button" class="btn-order action">
+      <router-link to="/order" class="btn-text">訂購</router-link>
+    </button>
   </div>
 </template>
 
@@ -45,7 +49,16 @@ export default {
       num: 1,
     };
   },
-  methods: {},
+  methods: {
+    deleteItem() {
+      console.log(
+        "使用filter將沒有點到的id，回傳一個新陣列並再渲染一次，回傳給後端"
+      );
+    },
+    clearCart() {
+      console.log("將購物車改為空陣列 []，回傳給後端");
+    },
+  },
 };
 </script>
 
@@ -71,6 +84,7 @@ export default {
 .delete {
   float: right;
   padding-right: 1rem;
+  cursor: pointer;
 }
 .name,
 .format {
@@ -90,11 +104,18 @@ export default {
   line-height: 2rem;
   font-size: var(--sec-font-size);
 }
+/* 底部 */
+.clear {
+  cursor: pointer;
+}
 .btn-order {
   width: 100%;
   margin-top: 1rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.btn-text {
+  color: var(--white);
 }
 
 @media screen and (max-width: 768px) {

@@ -7,8 +7,12 @@
         <label for="navbar-toggle" class="navbar-toggle-label">
           <i class="el-icon-menu menu"></i>
         </label>
-        <img src="https://i.imgur.com/KoJtvfu.png" class="p-logo" alt="" />
-        <!-- <el-link icon="el-icon-search" class="search"></el-link> -->
+        <img
+          src="https://i.imgur.com/KoJtvfu.png"
+          class="p-logo"
+          alt=""
+          @click="toHome"
+        />
         <i class="el-icon-search search"></i>
 
         <div class="p-category">
@@ -37,13 +41,23 @@
     <!-- PC的橫幅fixed -->
     <div class="header-util">
       <el-row type="flex" class="row-bg" justify="end">
-        <el-link type="info" class="header-util-item">登入會員</el-link>
-        <el-link type="info" class="header-util-item">我的會員</el-link>
-        <el-link type="info" class="header-util-item" @click="drawer = true"
+        <router-link to="/signIn" class="header-util-item"
+          >登入會員</router-link
+        >
+        <router-link to="/user" class="header-util-item">我的會員</router-link>
+        <el-link
+          type="info"
+          class="header-util-item"
+          :underline="false"
+          @click="drawer = true"
           >購物車</el-link
         >
-        <el-link type="info" class="header-util-item">聯絡我們</el-link>
-        <el-link icon="el-icon-search" class="header-util-item"></el-link>
+        <router-link to="/contact" class="header-util-item"
+          >聯絡我們</router-link
+        >
+        <router-link to="#" class="header-util-item"
+          ><i class="el-icon-search"></i
+        ></router-link>
       </el-row>
     </div>
     <!-- drawer -->
@@ -60,14 +74,19 @@
     <!-- PC的橫幅沒有fixed -->
     <div class="navbar">
       <div class="nav-wrap">
-        <img src="https://i.imgur.com/KoJtvfu.png" class="logo" alt="" />
+        <img
+          src="https://i.imgur.com/KoJtvfu.png"
+          class="logo"
+          alt=""
+          @click="toHome"
+        />
         <div class="nav">
-          <el-link type="info" class="nav-item">會員權益</el-link>
-          <el-link type="info" class="nav-item">現正優惠</el-link>
-          <el-link type="info" class="nav-item">熱銷推薦</el-link>
-          <el-link type="info" class="nav-item">優惠活動</el-link>
-          <el-link type="info" class="nav-item">精選文章</el-link>
-          <el-link type="info" class="nav-item">新產品</el-link>
+          <router-link to="#" class="nav-item">會員權益</router-link>
+          <router-link to="#" class="nav-item">現正優惠</router-link>
+          <router-link to="#" class="nav-item">熱銷推薦</router-link>
+          <router-link to="/activities" class="nav-item">優惠活動</router-link>
+          <router-link to="/articles" class="nav-item">精選文章</router-link>
+          <router-link to="#" class="nav-item">新產品</router-link>
         </div>
       </div>
       <div class="category">
@@ -298,6 +317,9 @@ export default {
     fetchData() {
       this.categories = [...dummyData.categories];
     },
+    toHome() {
+      this.$router.push("/home");
+    },
   },
 };
 </script>
@@ -326,6 +348,10 @@ export default {
 .header-util-item {
   margin-left: 1rem;
   font-size: var(--des-font-size);
+  color: var(--black);
+}
+.header-util-item:hover {
+  color: var(--black-hover);
 }
 .navbar {
   width: 80vw;
@@ -342,15 +368,21 @@ export default {
 }
 .nav {
   text-align: end;
+  line-height: 2rem;
 }
 .logo {
   width: 100px;
+  cursor: pointer;
 }
 .nav-item {
   margin-left: 1rem;
-  margin-bottom: 1rem;
   font-size: var(--thr-font-size);
-  padding-bottom: 0.5rem;
+  color: var(--black);
+  white-space: nowrap;
+}
+.nav-item:hover {
+  color: var(--black-hover);
+  border-bottom: 1px solid var(--black-hover);
 }
 .category {
   margin-top: 1.5rem;
@@ -358,10 +390,13 @@ export default {
 .category-title {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .category-item {
   margin-right: 2rem;
   font-size: var(--thr-font-size);
+  white-space: nowrap;
+  line-height: 2rem;
 }
 .sort {
   display: flex;
@@ -430,6 +465,7 @@ export default {
   }
   .p-logo {
     height: 40px;
+    cursor: pointer;
   }
   .menu,
   .search {
@@ -462,6 +498,7 @@ export default {
     all: unset;
     margin: 0 0.5rem;
     font-size: var(--thr-font-size);
+    color: var(--black);
   }
   .p-category {
     width: 60vw;

@@ -10,15 +10,18 @@
         <div class="area">
           <UserList class="left" />
           <div class="right">
-            <!-- 會員資訊 -->
+            <!-- 心得回顧 -->
             <div class="right-area">
-              <p class="right-title">一般會員</p>
-              <div class="descript">
-                <p class="member">歷史訂單 <span> &nbsp; 0</span></p>
-              </div>
-              <div class="descript">
-                <p class="member">心得回顧 <span> &nbsp; 0</span></p>
-              </div>
+              <p class="right-title">心得回顧</p>
+              <el-table :data="tableData" stripe class="impression">
+                <el-table-column prop="user" label="留言人"> </el-table-column>
+                <el-table-column prop="score" label="評分" min-width="150px">
+                  <el-rate v-model="scoreValue"></el-rate>
+                </el-table-column>
+                <el-table-column prop="content" label="內文"> </el-table-column>
+                <el-table-column prop="date" label="留言時間">
+                </el-table-column>
+              </el-table>
             </div>
           </div>
         </div>
@@ -36,7 +39,7 @@ import UserList from "../components/UserList";
 import Cart from "../components/Cart";
 
 export default {
-  name: "User",
+  name: "UserImpression",
   components: {
     Header,
     Footer,
@@ -44,7 +47,17 @@ export default {
     Cart,
   },
   data() {
-    return {};
+    return {
+      tableData: [
+        {
+          user: "珊珊",
+          score: 5,
+          content: "很服貼不掉妝，會再回購！",
+          date: "2022/11/12",
+        },
+      ],
+      scoreValue: 5,
+    };
   },
 };
 </script>
@@ -73,6 +86,7 @@ export default {
   flex-direction: row;
   margin: 2rem 0;
 }
+
 /* right */
 .right {
   margin-left: 1rem;
@@ -87,15 +101,6 @@ export default {
   font-weight: 700;
   color: var(--main-color);
   margin-bottom: 1rem;
-}
-/* 會員資訊 */
-.descript {
-  padding-left: 2rem;
-  padding-top: 1rem;
-}
-.member {
-  text-decoration-line: underline;
-  text-underline-offset: 0.5rem;
 }
 
 @media screen and (max-width: 768px) {

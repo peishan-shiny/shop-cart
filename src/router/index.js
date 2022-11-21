@@ -18,6 +18,21 @@ const routes = [
     component: () => import('../views/User.vue')
   },
   {
+    path: '/user/manage',
+    name: 'user-manage',
+    component: () => import('../views/UserManage.vue')
+  },
+  {
+    path: '/user/impression',
+    name: 'user-impression',
+    component: () => import('../views/UserImpression.vue')
+  },
+  {
+    path: '/user/old/order',
+    name: 'user-old-order',
+    component: () => import('../views/UserOldOrder.vue')
+  },
+  {
     path: '/home',
     name: 'home',
     component: Home
@@ -66,6 +81,11 @@ const routes = [
     path: '/store',
     name: 'store',
     component: () => import('../views/Store.vue')
+  },
+  {
+    path: '/privacy/policy',
+    name: 'privacy-policy',
+    component: () => import('../views/PrivacyPolicy.vue')
   },
   {
     path: '*',

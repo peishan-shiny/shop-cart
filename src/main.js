@@ -11,6 +11,11 @@ import store from './store'
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 
+// 讓跳頁後可以置頂
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0);
+});
+
 new Vue({
   router,
   store,

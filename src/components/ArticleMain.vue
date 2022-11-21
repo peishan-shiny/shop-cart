@@ -17,7 +17,7 @@
       amet..", comes from a line in section 1.10.32.
     </p>
     <button type="button" class="btn-read action" @click="isAction = !isAction">
-      繼續閱讀
+      {{ isAction ? "收合內文" : "繼續閱讀" }}
     </button>
     <p class="content" v-if="isAction">
       The standard Lorem Ipsum passage, used since the 1500s "Lorem ipsum dolor

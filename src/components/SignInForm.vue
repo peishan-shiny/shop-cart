@@ -80,7 +80,7 @@
             </div>
             <div class="form-content">
               <el-select
-                v-model="value"
+                v-model="gender"
                 placeholder="請選擇性別"
                 class="gender"
               >
@@ -111,8 +111,8 @@
             </div>
             <div class="form-content">
               <el-checkbox v-model="agreeChecked" required
-                >我同意<a href="" class="text-main-color"
-                  >網站服務條款及隱私政策</a
+                >我同意<router-link to="/privacy/policy" class="text-main-color"
+                  >服務條款及隱私政策</router-link
                 ></el-checkbox
               >
             </div>
@@ -138,6 +138,7 @@ export default {
       mail: "",
       password: "",
       passwordAgain: "",
+      gender: "",
       options: [
         {
           value: 1,
