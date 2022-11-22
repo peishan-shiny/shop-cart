@@ -36,7 +36,7 @@
       <div class="modal-content">
         <img :src="product.imgURL" alt="" class="modal-img" />
         <div class="modal-text">
-          <p class="title">{{ product.name }}</p>
+          <p class="modal-title">{{ product.name }}</p>
           <p class="brief">
             超輕薄粉體配方，透過彈性網狀層均勻沾附在粉撲，使粉體無重力完美服貼肌膚。
           </p>
@@ -61,7 +61,7 @@
               v-model="num"
               :min="1"
               :max="10"
-              label="描述文字"
+              size="mini"
             ></el-input-number>
           </div>
           <div class="unit-price">
@@ -189,7 +189,7 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.title {
+.modal-title {
   font-size: var(--main-font-size);
   font-weight: 700;
   letter-spacing: 0.2rem;
@@ -222,6 +222,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: end;
+  margin: 1rem 0;
 }
 .btn-add {
   padding: 1rem 0;
@@ -233,8 +234,8 @@ export default {
   .modal-content {
     display: flex;
     flex-direction: column;
-    padding: 0 1rem;
-    line-height: 3rem;
+    padding: 0;
+    line-height: 2rem;
   }
   .modal-img {
     all: unset;
@@ -242,6 +243,10 @@ export default {
   }
   .modal-text {
     margin-left: 0rem;
+  }
+  .modal-title {
+    font-size: var(--sec-font-size);
+    margin: 1rem 0;
   }
 }
 </style>
