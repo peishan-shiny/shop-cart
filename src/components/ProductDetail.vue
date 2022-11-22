@@ -55,25 +55,25 @@
       </el-select>
       <!-- 選完規格的商品才會出現 -->
       <div v-if="isSelect" class="count">
-        <p>{{ formatValue }}</p>
+        <p class="format-value">{{ formatValue }}</p>
         <el-input-number
           v-model="num"
           :min="1"
           :max="10"
           label="描述文字"
         ></el-input-number>
-        <span class="unit-price">
-          <p class="original-price" v-if="product.discount">
-            {{ "$NT" + product.price }}
-          </p>
-          <p class="price">
-            {{
-              product.discount
-                ? "$NT" + product.price * product.discount
-                : "$NT" + product.price
-            }}
-          </p>
-        </span>
+      </div>
+      <div class="unit-price">
+        <p class="original-price" v-if="product.discount">
+          {{ "$NT" + product.price }}
+        </p>
+        <p class="price">
+          {{
+            product.discount
+              ? "$NT" + product.price * product.discount
+              : "$NT" + product.price
+          }}
+        </p>
       </div>
       <button class="btn-add action">加入購物車</button>
       <!-- 產品說明 & 使用方法 -->
@@ -162,8 +162,10 @@ export default {
   width: 100%;
 }
 .text-area {
+  display: flex;
+  flex-direction: column;
   padding: 0 1rem;
-  width: 60%;
+  /* width: 60%; */
   line-height: 3rem;
 }
 .title {
@@ -181,8 +183,13 @@ export default {
   margin-bottom: 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+}
+.format-value {
+  margin-right: 1rem;
+}
+.unit-price {
+  text-align: end;
 }
 .original-price {
   text-decoration: line-through;

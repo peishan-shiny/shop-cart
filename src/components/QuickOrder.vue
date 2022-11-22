@@ -35,7 +35,7 @@
     </div>
 
     <button type="button" class="btn-order action">
-      <router-link to="/order" class="btn-text">訂購</router-link>
+      <router-link to="/order" class="btn-text">結帳</router-link>
     </button>
   </div>
 </template>
