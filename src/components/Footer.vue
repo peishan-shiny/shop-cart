@@ -36,20 +36,19 @@
         <!-- 產品資訊 -->
         <div class="footer-menu">
           <h1 class="footer-title">產品資訊</h1>
-          <div class="footer-item">
-            <router-link to="#" class="footer-text">保養系列</router-link>
-          </div>
-          <div class="footer-item">
-            <router-link to="#" class="footer-text">彩妝系列</router-link>
-          </div>
-          <div class="footer-item">
-            <router-link to="#" class="footer-text">香氛系列</router-link>
-          </div>
-          <div class="footer-item">
-            <router-link to="#" class="footer-text">身體髮品</router-link>
-          </div>
-          <div class="footer-item">
-            <router-link to="#" class="footer-text">美妝工具</router-link>
+          <div
+            class="footer-item"
+            v-for="category in categories"
+            :key="category.id"
+          >
+            <router-link
+              :to="{
+                name: 'products-categories',
+                params: { id: category.id },
+              }"
+              class="footer-text"
+              >{{ category.name }}</router-link
+            >
           </div>
         </div>
         <!-- 優惠活動 -->
@@ -110,7 +109,14 @@
               :key="category.id"
               class="second"
             >
-              <a href="" class="text-white">{{ category.name }}</a>
+              <router-link
+                :to="{
+                  name: 'products-categories',
+                  params: { id: category.id },
+                }"
+                class="text-white"
+                >{{ category.name }}</router-link
+              >
             </li>
           </ul>
         </li>

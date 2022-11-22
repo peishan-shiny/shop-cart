@@ -22,15 +22,20 @@
               :key="category.id"
               type="info"
               class="p-category-item"
+              :underline="false"
               >{{ category.name }}
 
               <div class="p-sort">
-                <el-link
+                <router-link
+                  :to="{
+                    name: 'products-categories',
+                    params: { id: category.id },
+                  }"
                   v-for="sort in category.sorts"
                   :key="sort.id"
                   type="info"
                   class="p-sort-item"
-                  >{{ sort.name }}</el-link
+                  >{{ sort.name }}</router-link
                 >
               </div>
             </el-link>
@@ -96,15 +101,20 @@
             :key="category.id"
             type="info"
             class="category-item"
+            :underline="false"
             >{{ category.name }}
 
             <div class="sort">
-              <el-link
+              <router-link
+                :to="{
+                  name: 'products-categories',
+                  params: { id: category.id },
+                }"
                 v-for="sort in category.sorts"
                 :key="sort.id"
                 type="info"
                 class="sort-item"
-                >{{ sort.name }}</el-link
+                >{{ sort.name }}</router-link
               >
             </div>
           </el-link>
@@ -409,10 +419,15 @@ export default {
   position: absolute;
 }
 .sort-item {
+  color: var(--black);
   padding: 0.5rem 1rem;
   text-align: center;
   white-space: nowrap;
   font-size: var(--thr-font-size);
+}
+.sort-item:hover {
+  color: var(--white);
+  background-color: var(--black);
 }
 .category-item:hover .sort {
   transform: scale(1, 1);
@@ -511,14 +526,17 @@ export default {
     transform: scale(0, 1);
     transform-origin: left;
     transition: transform 0.2s ease-out;
-    box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
   }
   .p-category-title {
     width: 30vw;
+    position: fixed;
+    left: 0px;
+    top: 0px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   .p-category-item {
     padding: 0.5rem 1rem;
@@ -526,27 +544,37 @@ export default {
     font-size: var(--thr-font-size);
   }
   .p-sort {
+    background-color: var(--white);
     display: flex;
     flex-direction: column;
-    transform: scale(0, 1);
-    transform-origin: left;
-    transition: transform 0.2s ease-out;
-    background-color: var(--white);
+    width: 30vw;
+    height: 100vh;
     position: fixed;
     left: 30vw;
     top: 0px;
-    width: 30vw;
-    height: 100vh;
+    opacity: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   .p-sort-item {
+    color: var(--black);
     padding: 0.5rem 1rem;
     font-size: var(--thr-font-size);
   }
   .navbar-toggle:checked ~ .p-category {
     transform: scale(1, 1);
   }
+  .p-category-item:hover {
+    background-color: var(--white);
+  }
   .p-category-item:hover .p-sort {
-    transform: scale(1, 1);
+    opacity: 1;
+    transition: opacity 0.2s ease-out 0.15s;
+  }
+  .p-sort-item:hover {
+    color: var(--white);
+    background-color: var(--black);
   }
 }
 </style>
