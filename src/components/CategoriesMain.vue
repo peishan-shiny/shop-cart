@@ -20,7 +20,12 @@
     </el-select>
 
     <div class="products-wrap">
-      <div v-for="item in products" :key="item.id" class="card">
+      <ProductCard
+        v-for="product in products"
+        :key="product.id"
+        :initial-product="product"
+      />
+      <!-- <div v-for="item in products" :key="item.id" class="card">
         <div class="card-image">
           <a href=""><img :src="item.imgURL" alt="" class="image" /></a>
         </div>
@@ -41,14 +46,17 @@
           </p>
           <button class="quick-view action">快速瀏覽</button>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
+import ProductCard from "./ProductCard";
+
 export default {
   name: "CategoriesMain",
+  components: { ProductCard },
   props: {
     category: {
       type: Object,
