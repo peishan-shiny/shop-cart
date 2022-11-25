@@ -21,32 +21,10 @@
 
     <div class="products-wrap">
       <ProductCard
-        v-for="product in products"
+        v-for="product in category.products"
         :key="product.id"
         :initial-product="product"
       />
-      <!-- <div v-for="item in products" :key="item.id" class="card">
-        <div class="card-image">
-          <a href=""><img :src="item.imgURL" alt="" class="image" /></a>
-        </div>
-        <div class="info">
-          <p class="product-title">{{ item.title }}</p>
-          <div v-if="item.discount" class="discount-descript">
-            <p class="original-price">{{ "NT$" + item.price }}</p>
-            <p class="discount-red">{{ item.discount * 10 + "折" }}</p>
-          </div>
-          <div v-else style="height: 32px"></div>
-          <p class="price">
-            {{
-              "NT$" +
-              (item.discount
-                ? Math.ceil(item.price * item.discount)
-                : item.price)
-            }}
-          </p>
-          <button class="quick-view action">快速瀏覽</button>
-        </div>
-      </div> -->
     </div>
   </div>
 </template>
@@ -58,14 +36,14 @@ export default {
   name: "CategoriesMain",
   components: { ProductCard },
   props: {
-    category: {
+    initialCategory: {
       type: Object,
       required: true,
     },
   },
   data() {
     return {
-      products: [],
+      category: this.initialCategory,
       img: require("../assets/images/green.jpg"),
       options: [
         {
@@ -88,12 +66,9 @@ export default {
       value: "",
     };
   },
-  created() {
-    this.fetchData();
-  },
-  methods: {
-    fetchData() {
-      this.products = this.category.sorts[0].products;
+  watch: {
+    initialCategory(newData) {
+      this.category = { ...this.category, ...newData };
     },
   },
 };
@@ -107,7 +82,8 @@ export default {
   margin-left: 1rem;
 }
 .img-block {
-  height: 300px;
+  min-height: 200px;
+  max-height: 300px;
   overflow: hidden;
   position: relative;
 }
@@ -130,55 +106,10 @@ export default {
 .products-wrap {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  /* grid-template-rows: 400px 400px 400px; */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
   grid-gap: 2rem 0;
 }
-.card {
-  padding-bottom: 5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-.image {
-  width: 100%;
-}
-.info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 2rem;
-  position: relative;
-}
-.original-price {
-  text-decoration: line-through;
-}
-.discount-descript {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.discount-red {
-  border-radius: 10px;
-  background: rgb(215, 10, 10);
-  color: var(--white);
-  margin-left: 2rem;
-  padding: 0 1rem;
-  font-size: var(--thr-font-size);
-}
-.product-title {
-  font-size: var(--sec-font-size);
-  letter-spacing: 0.2rem;
-  font-weight: 700;
-}
-.price {
-  font-size: var(--sec-font-size);
-}
-.quick-view {
-  width: 100%;
-  margin: 0 auto;
-  position: absolute;
-  top: 6.5rem;
-}
+
 @media screen and (max-width: 480px) {
   .right {
     /* all: unset; */
@@ -189,6 +120,9 @@ export default {
   }
   .select-range {
     margin: 1rem 0;
+  }
+  .products-wrap {
+    justify-content: center;
   }
 }
 </style>

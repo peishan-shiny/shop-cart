@@ -46,7 +46,9 @@
               </button>
             </div>
             <div class="form-content">
-              <a href="" class="text-main-color">忘記密碼？</a>
+              <p class="forget">
+                <a href="" class="text-main-color">忘記密碼？</a>
+              </p>
             </div>
           </div>
           <!-- 註冊 -->
@@ -105,16 +107,23 @@
               </el-date-picker>
             </div>
             <div class="form-content">
-              <el-checkbox v-model="newsChecked" required
-                >我願意接收 POPO SHOP 的最新消息、優惠等資訊</el-checkbox
-              >
+              <div class="checked-box">
+                <el-checkbox v-model="newsChecked" required></el-checkbox>
+                <p class="checked-text">
+                  我願意接收 POPO SHOP 的最新消息、優惠等資訊
+                </p>
+              </div>
             </div>
             <div class="form-content">
-              <el-checkbox v-model="agreeChecked" required
-                >我同意<router-link to="/privacy/policy" class="text-main-color"
-                  >服務條款及隱私政策</router-link
-                ></el-checkbox
-              >
+              <div class="checked-box">
+                <el-checkbox v-model="agreeChecked" required></el-checkbox>
+                <p class="checked-text">
+                  我同意
+                  <router-link to="/privacy/policy" class="text-main-color"
+                    >服務條款及隱私政策</router-link
+                  >
+                </p>
+              </div>
             </div>
             <div class="form-content">
               <button type="submit" class="action regSubmit">立即加入！</button>
@@ -153,6 +162,7 @@ export default {
       newsChecked: false,
       agreeChecked: false,
       tabActive: "login",
+      isProcessing: false,
     };
   },
   created() {
@@ -207,7 +217,7 @@ export default {
         console.log(data);
       } catch (error) {
         //若有錯誤記得將isLoading改成false，才不會是空白頁面
-        this.isLoading = false;
+        this.isProcessing = false;
         Toast.fire({
           icon: "warning",
           title: "資料錯誤請稍後再試！",
@@ -262,13 +272,16 @@ export default {
 .choose.active {
   border: unset;
 }
+.login,
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .form-content {
   width: 75vw;
   max-width: 300px;
   margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 .loginSubmit,
 .regSubmit {
@@ -281,10 +294,25 @@ export default {
   width: 100%;
   max-width: 300px;
 }
+.forget {
+  text-align: center;
+}
 .text-main-color {
   color: var(--main-color);
   border-bottom: 1px solid var(--main-color);
   padding-bottom: 1px;
+}
+.checked-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.checked-text {
+  color: var(--black);
+  font-size: var(--des-font-size);
+  white-space: normal;
+  line-height: 1.5rem;
+  padding: 0 0.5rem;
 }
 
 @media screen and (max-width: 480px) {

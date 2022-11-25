@@ -6,16 +6,16 @@
           <img class="image" :src="product.imgURL" alt="" />
         </div>
         <div>
-          <img class="image" src="https://i.imgur.com/KZXJKrm.jpg" alt="" />
+          <img class="image" :src="product.imgURL" alt="" />
         </div>
         <div>
-          <img class="image" src="https://i.imgur.com/KZXJKrm.jpg" alt="" />
+          <img class="image" :src="product.imgURL" alt="" />
         </div>
         <div>
-          <img class="image" src="https://i.imgur.com/Spox5DV.jpg" alt="" />
+          <img class="image" :src="product.imgURL" alt="" />
         </div>
         <div>
-          <img class="image" src="https://i.imgur.com/Spox5DV.jpg" alt="" />
+          <img class="image" :src="product.imgURL" alt="" />
         </div>
       </slick>
       <slick :options="sliderNav" class="slider-nav">
@@ -23,16 +23,16 @@
           <img class="image" :src="product.imgURL" alt="" />
         </div>
         <div>
-          <img class="image" src="https://i.imgur.com/KZXJKrm.jpg" alt="" />
+          <img class="image" :src="product.imgURL" alt="" />
         </div>
         <div>
-          <img class="image" src="https://i.imgur.com/KZXJKrm.jpg" alt="" />
+          <img class="image" :src="product.imgURL" alt="" />
         </div>
         <div>
-          <img class="image" src="https://i.imgur.com/Spox5DV.jpg" alt="" />
+          <img class="image" :src="product.imgURL" alt="" />
         </div>
         <div>
-          <img class="image" src="https://i.imgur.com/Spox5DV.jpg" alt="" />
+          <img class="image" :src="product.imgURL" alt="" />
         </div>
       </slick>
     </div>
@@ -40,6 +40,7 @@
       <p class="title">{{ product.name }}</p>
       <p class="brief">{{ product.shot_des }}</p>
       <el-select
+        v-if="product.format"
         v-model="formatValue"
         @change="selectChanged"
         placeholder="規格"
@@ -102,6 +103,7 @@ export default {
       type: Object,
       default: () => ({
         id: -1,
+        parentId: -1,
         name: "",
         price: 0,
         discount: 0,
@@ -166,6 +168,7 @@ export default {
   flex-direction: column;
   padding: 0 1rem;
   /* width: 60%; */
+  flex: 1;
   line-height: 3rem;
 }
 .title {
@@ -227,5 +230,11 @@ export default {
 <style>
 .el-collapse-item__header {
   font-size: var(--thr-font-size);
+}
+</style>
+
+<style>
+.slick-slide {
+  margin: 0.5rem 0.5rem;
 }
 </style>

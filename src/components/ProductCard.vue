@@ -1,7 +1,13 @@
 <template>
   <div class="card">
     <div class="card-image">
-      <a href=""><img :src="product.imgURL" alt="" class="image" /></a>
+      <router-link
+        :to="{
+          name: 'product',
+          query: { parentId: product.parentId, id: product.id },
+        }"
+        ><img :src="product.imgURL" alt="" class="image"
+      /></router-link>
     </div>
     <div class="info">
       <p class="product-title">{{ product.name }}</p>
@@ -30,7 +36,7 @@
     <el-dialog
       :visible.sync="centerDialogVisible"
       width="60%"
-      append-to-body="true"
+      append-to-body
       center
     >
       <div class="modal-content">
@@ -123,6 +129,7 @@ export default {
   font-family: "微軟正黑體";
 }
 .card {
+  width: 300px;
   padding-bottom: 5rem;
   padding-left: 1rem;
   padding-right: 1rem;

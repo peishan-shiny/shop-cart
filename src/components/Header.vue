@@ -29,7 +29,7 @@
                 <router-link
                   :to="{
                     name: 'products-categories',
-                    params: { id: category.id },
+                    params: { id: sort.id },
                   }"
                   v-for="sort in category.sorts"
                   :key="sort.id"
@@ -86,7 +86,6 @@
           @click="toHome"
         />
         <div class="nav">
-          <router-link to="#" class="nav-item">會員權益</router-link>
           <router-link to="#" class="nav-item">現正優惠</router-link>
           <router-link to="#" class="nav-item">熱銷推薦</router-link>
           <router-link to="/activities" class="nav-item">優惠活動</router-link>
@@ -106,13 +105,12 @@
 
             <div class="sort">
               <router-link
-                :to="{
-                  name: 'products-categories',
-                  params: { id: category.id },
-                }"
                 v-for="sort in category.sorts"
                 :key="sort.id"
-                type="info"
+                :to="{
+                  name: 'products-categories',
+                  params: { id: sort.id },
+                }"
                 class="sort-item"
                 >{{ sort.name }}</router-link
               >
@@ -133,19 +131,23 @@ const dummyData = {
       sorts: [
         {
           id: 1,
+          parentId: 1,
           name: "全部",
         },
         {
-          id: 2,
+          id: 7,
+          parentId: 1,
           name: "乳液",
         },
         {
-          id: 3,
-          name: "乳霜",
+          id: 8,
+          parentId: 1,
+          name: "精華液",
         },
         {
-          id: 4,
-          name: "保濕噴霧",
+          id: 9,
+          parentId: 1,
+          name: "面膜",
         },
       ],
     },
@@ -154,40 +156,44 @@ const dummyData = {
       name: "彩妝系列",
       sorts: [
         {
-          id: 1,
+          id: 2,
+          parentId: 2,
           name: "全部",
         },
         {
-          id: 2,
-          name: "粉底",
+          id: 15,
+          parentId: 2,
+          name: "遮瑕膏",
         },
         {
-          id: 3,
+          id: 16,
+          parentId: 2,
           name: "粉底液",
         },
         {
-          id: 4,
-          name: "氣墊",
+          id: 17,
+          parentId: 2,
+          name: "睫毛膏",
         },
         {
-          id: 5,
-          name: "蜜粉",
-        },
-        {
-          id: 6,
-          name: "腮紅",
-        },
-        {
-          id: 7,
-          name: "口紅",
-        },
-        {
-          id: 8,
+          id: 18,
+          parentId: 2,
           name: "眼影",
         },
         {
-          id: 9,
-          name: "打亮",
+          id: 19,
+          parentId: 2,
+          name: "腮紅",
+        },
+        {
+          id: 20,
+          parentId: 2,
+          name: "口紅",
+        },
+        {
+          id: 21,
+          parentId: 2,
+          name: "指甲油",
         },
       ],
     },
@@ -196,32 +202,19 @@ const dummyData = {
       name: "香氛系列",
       sorts: [
         {
-          id: 1,
+          id: 3,
+          parentId: 3,
           name: "全部",
         },
         {
-          id: 2,
-          name: "檸檬柑橘",
+          id: 38,
+          parentId: 3,
+          name: "精緻香水",
         },
         {
-          id: 3,
-          name: "密桃蘋果",
-        },
-        {
-          id: 4,
-          name: "香草萊姆",
-        },
-        {
-          id: 5,
-          name: "茉莉花香",
-        },
-        {
-          id: 6,
-          name: "白麝香",
-        },
-        {
-          id: 7,
-          name: "小蒼蘭",
+          id: 39,
+          parentId: 3,
+          name: "擴香瓶",
         },
       ],
     },
@@ -230,23 +223,28 @@ const dummyData = {
       name: "身體髮品",
       sorts: [
         {
-          id: 1,
+          id: 4,
+          parentId: 4,
           name: "全部",
         },
         {
-          id: 2,
+          id: 42,
+          parentId: 4,
           name: "沐浴乳",
         },
         {
-          id: 3,
-          name: "護髮乳",
+          id: 43,
+          parentId: 4,
+          name: "洗髮精",
         },
         {
-          id: 4,
+          id: 44,
+          parentId: 4,
           name: "潤髮乳",
         },
         {
-          id: 5,
+          id: 45,
+          parentId: 4,
           name: "潤膚乳",
         },
       ],
@@ -256,15 +254,18 @@ const dummyData = {
       name: "美妝工具",
       sorts: [
         {
-          id: 1,
+          id: 5,
+          parentId: 5,
           name: "全部",
         },
         {
-          id: 2,
+          id: 51,
+          parentId: 5,
           name: "睫毛夾",
         },
         {
-          id: 3,
+          id: 52,
+          parentId: 5,
           name: "各式刷具",
         },
       ],
@@ -274,16 +275,19 @@ const dummyData = {
       name: "男士保養",
       sorts: [
         {
-          id: 1,
+          id: 6,
+          parentId: 6,
           name: "全部",
         },
         {
-          id: 2,
+          id: 56,
+          parentId: 6,
           name: "控油洗面乳",
         },
         {
-          id: 3,
-          name: "酷涼洗面乳",
+          id: 57,
+          parentId: 6,
+          name: "抗痘洗面乳",
         },
       ],
     },
@@ -300,7 +304,7 @@ export default {
   data() {
     return {
       isDevice: false,
-      categories: [],
+      categories: dummyData.categories,
       drawer: false,
     };
   },
@@ -314,18 +318,13 @@ export default {
   },
   created() {
     this.isMobile();
-    this.fetchData();
     window.addEventListener("resize", this.isMobile);
   },
   methods: {
     isMobile() {
       const result = window.matchMedia("(max-width: 768px)").matches;
-      console.log(result);
       this.isDevice = result;
       return result;
-    },
-    fetchData() {
-      this.categories = [...dummyData.categories];
     },
     toHome() {
       this.$router.push("/home");
@@ -552,7 +551,10 @@ export default {
     position: fixed;
     left: 30vw;
     top: 0px;
-    opacity: 0;
+    /* opacity: 0; */
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: transform 0.2s ease-out;
     box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
@@ -569,8 +571,7 @@ export default {
     background-color: var(--white);
   }
   .p-category-item:hover .p-sort {
-    opacity: 1;
-    transition: opacity 0.2s ease-out 0.15s;
+    transform: scale(1, 1);
   }
   .p-sort-item:hover {
     color: var(--white);

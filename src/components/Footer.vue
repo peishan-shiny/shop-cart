@@ -78,9 +78,6 @@
         <div class="footer-menu">
           <h1 class="footer-title">關於我們</h1>
           <div class="footer-item">
-            <router-link to="#" class="footer-text">會員權益</router-link>
-          </div>
-          <div class="footer-item">
             <router-link to="/story" class="footer-text">品牌故事</router-link>
           </div>
           <div class="footer-item">
@@ -183,19 +180,23 @@ const dummyData = {
       sorts: [
         {
           id: 1,
+          parentId: 1,
           name: "全部",
         },
         {
-          id: 2,
+          id: 7,
+          parentId: 1,
           name: "乳液",
         },
         {
-          id: 3,
-          name: "乳霜",
+          id: 8,
+          parentId: 1,
+          name: "精華液",
         },
         {
-          id: 4,
-          name: "保濕噴霧",
+          id: 9,
+          parentId: 1,
+          name: "面膜",
         },
       ],
     },
@@ -204,40 +205,44 @@ const dummyData = {
       name: "彩妝系列",
       sorts: [
         {
-          id: 1,
+          id: 2,
+          parentId: 2,
           name: "全部",
         },
         {
-          id: 2,
-          name: "粉底",
+          id: 15,
+          parentId: 2,
+          name: "遮瑕膏",
         },
         {
-          id: 3,
+          id: 16,
+          parentId: 2,
           name: "粉底液",
         },
         {
-          id: 4,
-          name: "氣墊",
+          id: 17,
+          parentId: 2,
+          name: "睫毛膏",
         },
         {
-          id: 5,
-          name: "蜜粉",
-        },
-        {
-          id: 6,
-          name: "腮紅",
-        },
-        {
-          id: 7,
-          name: "口紅",
-        },
-        {
-          id: 8,
+          id: 18,
+          parentId: 2,
           name: "眼影",
         },
         {
-          id: 9,
-          name: "打亮",
+          id: 19,
+          parentId: 2,
+          name: "腮紅",
+        },
+        {
+          id: 20,
+          parentId: 2,
+          name: "口紅",
+        },
+        {
+          id: 21,
+          parentId: 2,
+          name: "指甲油",
         },
       ],
     },
@@ -246,32 +251,19 @@ const dummyData = {
       name: "香氛系列",
       sorts: [
         {
-          id: 1,
+          id: 3,
+          parentId: 3,
           name: "全部",
         },
         {
-          id: 2,
-          name: "檸檬柑橘",
+          id: 38,
+          parentId: 3,
+          name: "精緻香水",
         },
         {
-          id: 3,
-          name: "密桃蘋果",
-        },
-        {
-          id: 4,
-          name: "香草萊姆",
-        },
-        {
-          id: 5,
-          name: "茉莉花香",
-        },
-        {
-          id: 6,
-          name: "白麝香",
-        },
-        {
-          id: 7,
-          name: "小蒼蘭",
+          id: 39,
+          parentId: 3,
+          name: "擴香瓶",
         },
       ],
     },
@@ -280,23 +272,28 @@ const dummyData = {
       name: "身體髮品",
       sorts: [
         {
-          id: 1,
+          id: 4,
+          parentId: 4,
           name: "全部",
         },
         {
-          id: 2,
+          id: 42,
+          parentId: 4,
           name: "沐浴乳",
         },
         {
-          id: 3,
-          name: "護髮乳",
+          id: 43,
+          parentId: 4,
+          name: "洗髮精",
         },
         {
-          id: 4,
+          id: 44,
+          parentId: 4,
           name: "潤髮乳",
         },
         {
-          id: 5,
+          id: 45,
+          parentId: 4,
           name: "潤膚乳",
         },
       ],
@@ -306,15 +303,18 @@ const dummyData = {
       name: "美妝工具",
       sorts: [
         {
-          id: 1,
+          id: 5,
+          parentId: 5,
           name: "全部",
         },
         {
-          id: 2,
+          id: 51,
+          parentId: 5,
           name: "睫毛夾",
         },
         {
-          id: 3,
+          id: 52,
+          parentId: 5,
           name: "各式刷具",
         },
       ],
@@ -324,16 +324,19 @@ const dummyData = {
       name: "男士保養",
       sorts: [
         {
-          id: 1,
+          id: 6,
+          parentId: 6,
           name: "全部",
         },
         {
-          id: 2,
+          id: 56,
+          parentId: 6,
           name: "控油洗面乳",
         },
         {
-          id: 3,
-          name: "酷涼洗面乳",
+          id: 57,
+          parentId: 6,
+          name: "抗痘洗面乳",
         },
       ],
     },
