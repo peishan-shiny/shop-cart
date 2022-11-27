@@ -3,7 +3,16 @@
     <!-- 行動版的橫幅fixed -->
     <div class="phone-wrap">
       <div class="phone">
-        <input type="checkbox" class="navbar-toggle" id="navbar-toggle" />
+        <input
+          type="checkbox"
+          id="navbar-toggle"
+          :class="[
+            'navbar-toggle',
+            { open: isOpen === 'ok' },
+            { close: isClose === 'ok' },
+          ]"
+          @click="open"
+        />
         <label for="navbar-toggle" class="navbar-toggle-label">
           <i class="el-icon-menu menu"></i>
         </label>
@@ -25,16 +34,15 @@
               :underline="false"
               >{{ category.name }}
 
-              <div class="p-sort">
+              <div class="p-sort" @click="close">
                 <router-link
+                  class="p-sort-item"
                   :to="{
                     name: 'products-categories',
                     params: { id: sort.id },
                   }"
                   v-for="sort in category.sorts"
                   :key="sort.id"
-                  type="info"
-                  class="p-sort-item"
                   >{{ sort.name }}</router-link
                 >
               </div>
@@ -306,6 +314,8 @@ export default {
       isDevice: false,
       categories: dummyData.categories,
       drawer: false,
+      isOpen: "no",
+      isClose: "no",
     };
   },
   computed: {
@@ -328,6 +338,14 @@ export default {
     },
     toHome() {
       this.$router.push("/home");
+    },
+    open() {
+      this.isOpen = "ok";
+      this.isClose = "no";
+    },
+    close() {
+      this.isOpen = "no";
+      this.isClose = "ok";
     },
   },
 };
@@ -551,7 +569,6 @@ export default {
     position: fixed;
     left: 30vw;
     top: 0px;
-    /* opacity: 0; */
     transform: scale(0, 1);
     transform-origin: left;
     transition: transform 0.2s ease-out;
@@ -564,9 +581,9 @@ export default {
     padding: 0.5rem 1rem;
     font-size: var(--thr-font-size);
   }
-  .navbar-toggle:checked ~ .p-category {
+  /* .navbar-toggle:checked ~ .p-category {
     transform: scale(1, 1);
-  }
+  } */
   .p-category-item:hover {
     background-color: var(--white);
   }
@@ -576,6 +593,15 @@ export default {
   .p-sort-item:hover {
     color: var(--white);
     background-color: var(--black);
+  }
+
+  /* 增加樣式進去class */
+  .navbar-toggle.open ~ .p-category {
+    transform: scale(1, 1);
+  }
+
+  .navbar-toggle.close ~ .p-category {
+    transform: scale(0, 1);
   }
 }
 </style>

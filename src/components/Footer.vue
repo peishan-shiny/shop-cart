@@ -155,7 +155,7 @@
       </ul>
     </div>
 
-    <div v-if="isDevice" class="footer-bottom">
+    <div v-if="isUpScroll" class="footer-bottom">
       <div class="footer-bottom-inner">
         <router-link to="/store" class="text-white"
           ><i class="footer-bottom-icon el-icon-location"></i
@@ -345,6 +345,12 @@ const dummyData = {
 
 export default {
   name: "Footer",
+  props: {
+    isUpScroll: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       isDevice: false,
@@ -357,8 +363,19 @@ export default {
     this.fetchData();
     window.addEventListener("resize", this.isMobile);
   },
+  watch: {
+    // height: {
+    //   handler(newName, oldName) {
+    //     if (newName > oldName) {
+    //       this.isUpScroll = false;
+    //     } else {
+    //       this.isUpScroll = true;
+    //     }
+    //   },
+    // },
+  },
   methods: {
-    // 新增判斷方法
+    // 判斷裝置的方法
     isMobile() {
       const result = window.matchMedia("(max-width: 768px)").matches;
       console.log(result);
@@ -367,6 +384,11 @@ export default {
     fetchData() {
       this.categories = [...dummyData.categories];
     },
+    // 判斷是否上滑
+    // scrollHeight(e) {
+    //   this.height = e.target.scrollTop;
+    //   console.log(this.height);
+    // },
   },
 };
 </script>
@@ -484,22 +506,29 @@ export default {
   .activity:hover .activity-list {
     transform: scale(1, 1);
   }
-  .footer-bottom {
-    background-color: var(--sec-color);
-    padding: 0.5rem 0;
-  }
-  .footer-bottom-inner {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-  .footer-bottom-icon {
-    font-size: 35px;
-    color: var(--black);
-  }
   .arrow-down {
     position: absolute;
     right: 5vw;
+  }
+
+  @media screen and (max-width: 480px) {
+    /* 行動版的fix */
+    .footer-bottom {
+      background-color: var(--sec-color);
+      padding: 0.5rem 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .footer-bottom-inner {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    .footer-bottom-icon {
+      font-size: 35px;
+      color: var(--black);
+    }
   }
 }
 </style>

@@ -21,11 +21,24 @@
 
     <div class="products-wrap">
       <ProductCard
-        v-for="product in category.products"
+        v-for="product in pageChangeItem.length
+          ? pageChangeItem[0]
+          : category.products"
         :key="product.id"
         :initial-product="product"
       />
     </div>
+
+    <!-- 分頁 -->
+    <el-pagination
+      layout="prev, pager, next"
+      :total="category.products.length"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage"
+      :page-size="pageSize"
+      style="text-align: center"
+    >
+    </el-pagination>
   </div>
 </template>
 
@@ -64,11 +77,41 @@ export default {
         },
       ],
       value: "",
+      currentPage: 1,
+      pageSize: 12, //每頁顯示多少數據
+      pageChangeItem: [],
     };
+  },
+  created() {
+    this.renderCards(1);
   },
   watch: {
     initialCategory(newData) {
       this.category = { ...this.category, ...newData };
+      this.renderCards(1);
+    },
+  },
+  methods: {
+    renderCards(page) {
+      this.pageChangeItem = [];
+      this.currentPage = page;
+      const productSum = this.category.products;
+      const begin = (this.currentPage - 1) * this.pageSize;
+      const end = begin + this.pageSize;
+
+      this.pageChangeItem.push(productSum.slice(begin, end));
+    },
+    handleCurrentChange(val) {
+      this.pageChangeItem = [];
+      this.currentPage = val;
+      // console.log(val);
+      const productSum = this.category.products;
+      const begin = (this.currentPage - 1) * this.pageSize;
+      const end = begin + this.pageSize;
+      // console.log(this.currentPage, begin, end);
+      this.pageChangeItem.push(productSum.slice(begin, end));
+      // console.log(this.pageChangeItem);
+      // return productSum.slice(begin, end);
     },
   },
 };

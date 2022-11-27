@@ -43,7 +43,7 @@
       <ProductCardTwo />
     </div>
 
-    <Footer class="sticky-bottom"> </Footer>
+    <Footer class="sticky-bottom" :isUpScroll="isUpScroll"> </Footer>
   </div>
 </template>
 
@@ -69,10 +69,22 @@ export default {
         { id: 1, url: require("../assets/images/home-01.jpg") },
         { id: 2, url: require("../assets/images/home-02.jpeg") },
       ],
+      height: 0,
+      isUpScroll: false,
     };
   },
   created() {
     this.imgLoad();
+  },
+  watch: {
+    height(newHeight, oldHeight) {
+      // console.log(newHeight, oldHeight);
+      if (newHeight > oldHeight) {
+        this.isUpScroll = false;
+      } else {
+        this.isUpScroll = true;
+      }
+    },
   },
   methods: {
     imgLoad() {
@@ -80,6 +92,22 @@ export default {
         this.bannerHeight = this.$refs.imgHeight[0].height;
       });
     },
+
+    scrollToTop() {
+      const scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+
+      this.height = scrollTop;
+      // console.log(scrollTop);
+    },
+
+    // 判斷是否上滑
+    // scroll(e) {
+    //   this.height = e.target.scrollTop;
+    //   console.log(this.height);
+    // },
   },
   mounted() {
     window.addEventListener(
@@ -89,6 +117,8 @@ export default {
       },
       false
     );
+
+    window.addEventListener("scroll", this.scrollToTop);
   },
 };
 </script>
