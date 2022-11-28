@@ -1,15 +1,21 @@
 <template>
   <div class="container">
     <section class="section discount">
-      <p class="section-title">現正優惠</p>
+      <p class="section-title">{{ newPraducts.name }}</p>
       <slick :options="slickOptions">
         <div v-for="item in products" :key="item.id" class="card">
           <div class="card-content">
             <div class="card-image">
-              <a href=""><img :src="item.imgURL" alt="" class="image" /></a>
+              <router-link
+                :to="{
+                  name: 'product',
+                  query: { parentId: item.parentId, id: item.id },
+                }"
+                ><img :src="item.imgURL" alt="" class="image"
+              /></router-link>
             </div>
             <div class="info">
-              <p class="product-title">{{ item.title }}</p>
+              <p class="product-title">{{ item.name }}</p>
               <div v-if="item.discount" class="discount-descript">
                 <p class="original-price">{{ "NT$" + item.price }}</p>
                 <p class="discount-red">{{ item.discount * 10 + "折" }}</p>
@@ -35,61 +41,39 @@
 import Slick from "vue-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-const dummyData = {
-  products: [
-    {
-      id: 1,
-      title: "超服貼輕透粉底",
-      price: 1080,
-      discount: 0.5,
-      imgURL: require("../assets/images/product-01.jpg"),
-    },
-    {
-      id: 2,
-      title: "楊澄淋代言款",
-      price: 1980,
-      imgURL: require("../assets/images/product-02.png"),
-    },
-    {
-      id: 3,
-      title: "露營攜帶組",
-      price: 690,
-      discount: 0.95,
-      imgURL: require("../assets/images/product-03.png"),
-    },
-    {
-      id: 4,
-      title: "小資族保養系列",
-      price: 1580,
-      discount: 0.7,
-      imgURL: require("../assets/images/product-04.png"),
-    },
-    {
-      id: 5,
-      title: "男士清潔洗面乳",
-      price: 590,
-      imgURL: require("../assets/images/product-05.png"),
-    },
-  ],
-};
 
 export default {
   name: "ProductCardTwo",
   components: { Slick },
+  props: {
+    newPraducts: {
+      type: Object,
+      required: true,
+    },
+  },
 
   data() {
     return {
-      products: dummyData.products,
+      products: this.newPraducts.products,
       slickOptions: {
         rows: 3,
-        slidesToShow: 1,
-        slidesToScroll: 1,
+        slidesToShow: 2,
+        slidesToScroll: 2,
         infinite: true,
         arrows: false,
         cssEase: "linear",
         dots: true,
         autoplay: true,
         autoplaySpeed: 3000,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+        ],
       },
     };
   },

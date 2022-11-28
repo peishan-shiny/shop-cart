@@ -55,10 +55,19 @@
         <div class="footer-menu">
           <h1 class="footer-title">優惠活動</h1>
           <div class="footer-item">
-            <router-link to="#" class="footer-text">現正優惠</router-link>
+            <router-link to="/new-product" class="footer-text"
+              >新產品</router-link
+            >
           </div>
           <div class="footer-item">
-            <router-link to="#" class="footer-text">熱銷推薦</router-link>
+            <router-link to="/discount" class="footer-text"
+              >現正優惠</router-link
+            >
+          </div>
+          <div class="footer-item">
+            <router-link to="/recommend" class="footer-text"
+              >熱銷推薦</router-link
+            >
           </div>
           <div class="footer-item">
             <router-link to="/activities" class="footer-text"
@@ -69,9 +78,6 @@
             <router-link to="/articles" class="footer-text"
               >精選文章</router-link
             >
-          </div>
-          <div class="footer-item">
-            <router-link to="#" class="footer-text">新產品</router-link>
           </div>
         </div>
         <!-- 關於我們 -->
@@ -122,10 +128,19 @@
           優惠活動<span> <i class="el-icon-arrow-down arrow-down"></i></span>
           <ul class="activity-list">
             <li class="second">
-              <router-link to="#" class="text-white">現正優惠</router-link>
+              <router-link to="/new-product" class="text-white"
+                >新產品</router-link
+              >
             </li>
             <li class="second">
-              <router-link to="#" class="text-white">熱銷推薦</router-link>
+              <router-link to="/discount" class="text-white"
+                >現正優惠</router-link
+              >
+            </li>
+            <li class="second">
+              <router-link to="/recommend" class="text-white"
+                >熱銷推薦</router-link
+              >
             </li>
             <li class="second">
               <router-link to="/activities" class="text-white"
@@ -136,9 +151,6 @@
               <router-link to="/articles" class="text-white"
                 >精選文章</router-link
               >
-            </li>
-            <li class="second">
-              <router-link to="#" class="text-white">新產品</router-link>
             </li>
           </ul>
         </li>

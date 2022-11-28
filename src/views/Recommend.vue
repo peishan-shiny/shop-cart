@@ -25,146 +25,8 @@ import CategoriesList from "../components/CategoriesList";
 import CategoriesMain from "../components/CategoriesMain";
 
 const jsData = {
-  name: "現正優惠",
+  name: "熱銷推薦",
   products: [
-    {
-      id: 10,
-      parentId: 7,
-      name: "茶樹保濕乳液",
-      price: 600,
-      discount: 0.8,
-      imgURL: require("../assets/images/product/maintenance/lotion-01.jpg"),
-      shot_des: "含有綠茶的萃取與綠茶籽油，強效保濕乳。",
-      directions: "1.溫和不刺膚的保濕乳液。2.每天使用維持細緻水嫩。",
-      use: "取適量由內至外輕柔塗抹於臉、頸部。",
-      details: [
-        {
-          id: 1,
-          title: "商品",
-          content: "茶樹保濕乳液",
-        },
-        {
-          id: 2,
-          title: "容量",
-          content: "150ml",
-        },
-        {
-          id: 3,
-          title: "製造地",
-          content: "台灣",
-        },
-        {
-          id: 4,
-          title: "注意事項",
-          content:
-            "1.使用後皮膚若有異狀請立即停用。2.使用後請密封瓶蓋。3.請避免使用於傷口、紅腫及濕疹等皮膚異常部位。",
-        },
-      ],
-    },
-    {
-      id: 11,
-      parentId: 7,
-      name: "平衡調理乳液",
-      price: 600,
-      discount: 0.8,
-      imgURL: require("../assets/images/product/maintenance/lotion-02.jpg"),
-      shot_des: "有助於重新平衡肌膚酸鹼度及油水平衡，使肌膚回到健康狀態。",
-      directions: "1.溫和不刺膚的調理乳液。2.幫助肌膚回到油水平衡的狀態。",
-      use: "取適量由內至外輕柔塗抹於臉、頸部。",
-      details: [
-        {
-          id: 1,
-          title: "商品",
-          content: "平衡調理乳液",
-        },
-        {
-          id: 2,
-          title: "容量",
-          content: "150ml",
-        },
-        {
-          id: 3,
-          title: "製造地",
-          content: "台灣",
-        },
-        {
-          id: 4,
-          title: "注意事項",
-          content:
-            "1.使用後皮膚若有異狀請立即停用。2.使用後請密封瓶蓋。3.請避免使用於傷口、紅腫及濕疹等皮膚異常部位。",
-        },
-      ],
-    },
-    {
-      id: 12,
-      parentId: 8,
-      name: "保濕精華液",
-      price: 800,
-      discount: 0.9,
-      imgURL: require("../assets/images/product/maintenance/essence-01.jpg"),
-      shot_des: "含豐富的保濕精華，持續性給予肌膚滋潤再生修護。",
-      directions:
-        "1.溫和不刺膚的精華液。2.10大配方，保濕不黏膩，給予肌膚滿滿的營養，喚醒肌膚活力。",
-      use: "取適量由內至外輕柔塗抹於臉、頸部。",
-      details: [
-        {
-          id: 1,
-          title: "商品",
-          content: "保濕精華液",
-        },
-        {
-          id: 2,
-          title: "容量",
-          content: "90ml",
-        },
-        {
-          id: 3,
-          title: "製造地",
-          content: "台灣",
-        },
-        {
-          id: 4,
-          title: "注意事項",
-          content:
-            "1.使用後皮膚若有異狀請立即停用。2.使用後請密封瓶蓋。3.請避免使用於傷口、紅腫及濕疹等皮膚異常部位。",
-        },
-      ],
-    },
-    {
-      id: 13,
-      parentId: 9,
-      name: "超貼膚面膜(白)",
-      price: 300,
-      discount: 0.9,
-      imgURL: require("../assets/images/product/maintenance/mask-01.jpg"),
-      shot_des: "完美服貼於臉部輪廓，均勻地為肌膚傳遞活性成分的生物纖維面膜。",
-      directions:
-        "1.極致服貼的高級面膜。2.幫助強化肌膚表層、改善肌膚、增加肌膚水分、加強肌膚彈性、提亮肌膚透明度。",
-      use: "潔膚後，將面膜貼至臉部，靜置10~20分鐘後取下。",
-      details: [
-        {
-          id: 1,
-          title: "商品",
-          content: "超貼膚面膜(白)",
-        },
-        {
-          id: 2,
-          title: "容量",
-          content: "20g",
-        },
-        {
-          id: 3,
-          title: "製造地",
-          content: "台灣",
-        },
-        {
-          id: 4,
-          title: "注意事項",
-          content:
-            "1.使用後皮膚若有異狀請立即停用。2.請避免使用於傷口、紅腫及濕疹等皮膚異常部位。3.避免存放在極端溫度(太熱或太冷)或陽光直射的地方。",
-        },
-      ],
-    },
     {
       id: 14,
       parentId: 9,
@@ -512,7 +374,7 @@ const jsData = {
 };
 
 export default {
-  name: "Discount",
+  name: "Recommend",
   components: {
     Header,
     Footer,

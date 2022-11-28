@@ -94,11 +94,11 @@
           @click="toHome"
         />
         <div class="nav">
-          <router-link to="#" class="nav-item">現正優惠</router-link>
-          <router-link to="#" class="nav-item">熱銷推薦</router-link>
+          <router-link to="/new-product" class="nav-item">新產品</router-link>
+          <router-link to="/discount" class="nav-item">現正優惠</router-link>
+          <router-link to="/recommend" class="nav-item">熱銷推薦</router-link>
           <router-link to="/activities" class="nav-item">優惠活動</router-link>
           <router-link to="/articles" class="nav-item">精選文章</router-link>
-          <router-link to="#" class="nav-item">新產品</router-link>
         </div>
       </div>
       <div class="category">

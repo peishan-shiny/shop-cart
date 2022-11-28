@@ -1,16 +1,16 @@
 <template>
   <div class="left">
     <el-collapse @change="handleChange">
+      <el-collapse-item title="新產品" name="13" class="item-wrap">
+        <router-link to="/new-product" class="item">新產品</router-link>
+      </el-collapse-item>
+
       <el-collapse-item title="現正優惠" name="11" class="item-wrap">
-        <router-link to="/signIn" class="item">現正優惠</router-link>
+        <router-link to="/discount" class="item">現正優惠</router-link>
       </el-collapse-item>
 
       <el-collapse-item title="熱銷推薦" name="12" class="item-wrap">
-        <router-link to="/signIn" class="item">熱銷推薦</router-link>
-      </el-collapse-item>
-
-      <el-collapse-item title="新產品" name="13" class="item-wrap">
-        <router-link to="/signIn" class="item">新產品</router-link>
+        <router-link to="/recommend" class="item">熱銷推薦</router-link>
       </el-collapse-item>
 
       <el-collapse-item
