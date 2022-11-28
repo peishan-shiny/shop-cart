@@ -1,115 +1,101 @@
 <template>
-  <div class="sticky-footer">
-    <div class="sticky-content">
-      <Header />
-
-      <div class="container">
-        <h1 class="title">我的會員帳戶</h1>
-        <hr class="title-line" />
-        <Cart />
-        <div class="area">
-          <UserList class="left" />
-          <div class="right">
-            <!-- 管理訂單 -->
-            <div class="right-area">
-              <p class="right-title">管理訂單</p>
-              <div class="order-state">
-                <!-- 已結束 -->
-                <div class="ending">
-                  <div class="ending-state">
-                    <p class="ending-text">取消</p>
-                    <p class="ending-number">0</p>
-                  </div>
-                  <div class="ending-state">
-                    <p class="ending-text">退貨</p>
-                    <p class="ending-number">0</p>
-                  </div>
-                </div>
-
-                <!-- 進行中 -->
-                <div class="processing">
-                  <div class="processing-state">
-                    <p class="state-number">0</p>
-                    <p class="state-text">接收訂單</p>
-                  </div>
-                </div>
-                <div>
-                  <i class="el-icon-arrow-right"></i>
-                </div>
-                <div class="processing">
-                  <div class="processing-state">
-                    <p class="state-number">0</p>
-                    <p class="state-text">完成結帳</p>
-                  </div>
-                </div>
-                <div>
-                  <i class="el-icon-arrow-right"></i>
-                </div>
-                <div class="processing">
-                  <div class="processing-state">
-                    <p class="state-number">0</p>
-                    <p class="state-text">準備出貨</p>
-                  </div>
-                </div>
-                <div>
-                  <i class="el-icon-arrow-right"></i>
-                </div>
-                <div class="processing">
-                  <div class="processing-state">
-                    <p class="state-number">0</p>
-                    <p class="state-text">正在配送</p>
-                  </div>
-                </div>
-                <div>
-                  <i class="el-icon-arrow-right"></i>
-                </div>
-                <div class="processing">
-                  <div class="processing-state">
-                    <p class="state-number">0</p>
-                    <p class="state-text">完成出貨</p>
-                  </div>
-                </div>
-                <div>
-                  <i class="el-icon-arrow-right"></i>
-                </div>
-                <div class="processing">
-                  <div class="processing-state">
-                    <p class="state-number">0</p>
-                    <p class="state-text">確認收貨</p>
-                  </div>
-                </div>
+  <div class="container">
+    <h1 class="title">我的會員帳戶</h1>
+    <hr class="title-line" />
+    <div class="area">
+      <UserList class="left" />
+      <div class="right">
+        <!-- 管理訂單 -->
+        <div class="right-area">
+          <p class="right-title">管理訂單</p>
+          <div class="order-state">
+            <!-- 已結束 -->
+            <div class="ending">
+              <div class="ending-state">
+                <p class="ending-text">取消</p>
+                <p class="ending-number">0</p>
               </div>
-              <!-- 訂單細項 -->
-              <div class="order-detail">
-                <div class="detail-title"><p>訂購日期</p></div>
-                <div class="detail-title"><p>訂購編號</p></div>
-                <div class="detail-title"><p>商品</p></div>
-                <div class="detail-title"><p>付款金額</p></div>
-                <div class="detail-title"><p>訂單狀態</p></div>
+              <div class="ending-state">
+                <p class="ending-text">退貨</p>
+                <p class="ending-number">0</p>
               </div>
             </div>
+
+            <!-- 進行中 -->
+            <div class="processing">
+              <div class="processing-state">
+                <p class="state-number">0</p>
+                <p class="state-text">接收訂單</p>
+              </div>
+            </div>
+            <div>
+              <i class="el-icon-arrow-right"></i>
+            </div>
+            <div class="processing">
+              <div class="processing-state">
+                <p class="state-number">0</p>
+                <p class="state-text">完成結帳</p>
+              </div>
+            </div>
+            <div>
+              <i class="el-icon-arrow-right"></i>
+            </div>
+            <div class="processing">
+              <div class="processing-state">
+                <p class="state-number">0</p>
+                <p class="state-text">準備出貨</p>
+              </div>
+            </div>
+            <div>
+              <i class="el-icon-arrow-right"></i>
+            </div>
+            <div class="processing">
+              <div class="processing-state">
+                <p class="state-number">0</p>
+                <p class="state-text">正在配送</p>
+              </div>
+            </div>
+            <div>
+              <i class="el-icon-arrow-right"></i>
+            </div>
+            <div class="processing">
+              <div class="processing-state">
+                <p class="state-number">0</p>
+                <p class="state-text">完成出貨</p>
+              </div>
+            </div>
+            <div>
+              <i class="el-icon-arrow-right"></i>
+            </div>
+            <div class="processing">
+              <div class="processing-state">
+                <p class="state-number">0</p>
+                <p class="state-text">確認收貨</p>
+              </div>
+            </div>
+          </div>
+          <!-- 訂單細項 -->
+          <div class="order-detail">
+            <div class="detail-title"><p>訂購日期</p></div>
+            <div class="detail-title"><p>訂購編號</p></div>
+            <div class="detail-title"><p>商品</p></div>
+            <div class="detail-title"><p>付款金額</p></div>
+            <div class="detail-title"><p>訂單狀態</p></div>
           </div>
         </div>
       </div>
     </div>
-    <Footer class="sticky-bottom"> </Footer>
   </div>
 </template>
 
 
 <script>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer";
 import UserList from "../components/UserList";
-import Cart from "../components/Cart";
 
 export default {
   name: "UserOldOrder",
   components: {
-    Header,
-    Footer,
     UserList,
-    Cart,
   },
   data() {
     return {};
@@ -118,10 +104,6 @@ export default {
 </script>
 
 <style scoped>
-.sticky-content {
-  min-height: 100vh;
-  padding-bottom: 250px;
-}
 .container {
   width: 80vw;
   max-width: 1440px;

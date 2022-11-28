@@ -1,47 +1,33 @@
 <template>
-  <div class="sticky-footer">
-    <div class="sticky-content">
-      <Header />
-
-      <div class="container">
-        <h1 class="title">我的會員帳戶</h1>
-        <hr class="title-line" />
-        <Cart />
-        <div class="area">
-          <UserList class="left" />
-          <div class="right">
-            <!-- 會員資訊 -->
-            <div class="right-area">
-              <p class="right-title">一般會員</p>
-              <div class="descript">
-                <p class="member">歷史訂單 <span> &nbsp; 0</span></p>
-              </div>
-              <div class="descript">
-                <p class="member">心得回顧 <span> &nbsp; 0</span></p>
-              </div>
-            </div>
+  <div class="container">
+    <h1 class="title">我的會員帳戶</h1>
+    <hr class="title-line" />
+    <div class="area">
+      <UserList class="left" />
+      <div class="right">
+        <!-- 會員資訊 -->
+        <div class="right-area">
+          <p class="right-title">一般會員</p>
+          <div class="descript">
+            <p class="member">歷史訂單 <span> &nbsp; 0</span></p>
+          </div>
+          <div class="descript">
+            <p class="member">心得回顧 <span> &nbsp; 0</span></p>
           </div>
         </div>
       </div>
     </div>
-    <Footer class="sticky-bottom"> </Footer>
   </div>
 </template>
 
 
 <script>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer";
 import UserList from "../components/UserList";
-import Cart from "../components/Cart";
 
 export default {
   name: "User",
   components: {
-    Header,
-    Footer,
     UserList,
-    Cart,
   },
   data() {
     return {};
@@ -50,10 +36,6 @@ export default {
 </script>
 
 <style scoped>
-.sticky-content {
-  min-height: 100vh;
-  padding-bottom: 250px;
-}
 .container {
   width: 80vw;
   max-width: 1440px;

@@ -1,26 +1,15 @@
 <template>
-  <div class="sticky-footer">
-    <div class="sticky-content">
-      <Header />
-
-      <div class="container">
-        <h1 class="title">{{ category.name }}</h1>
-        <hr class="title-line" />
-        <div class="area">
-          <SortsList :category="category" class="mobile" />
-          <CategoriesList class="left" />
-          <CategoriesMain :initialCategory="category" class="right" />
-        </div>
-      </div>
+  <div class="container">
+    <h1 class="title">{{ category.name }}</h1>
+    <hr class="title-line" />
+    <div class="area">
+      <CategoriesList class="left" />
+      <CategoriesMain :initialCategory="category" class="right" />
     </div>
-    <Footer class="sticky-bottom"> </Footer>
   </div>
 </template>
 
 <script>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer";
-import SortsList from "../components/SortsList";
 import CategoriesList from "../components/CategoriesList";
 import CategoriesMain from "../components/CategoriesMain";
 
@@ -3062,9 +3051,6 @@ const jsData = {
 export default {
   name: "Products",
   components: {
-    Header,
-    Footer,
-    SortsList,
     CategoriesList,
     CategoriesMain,
   },
@@ -3098,10 +3084,6 @@ export default {
 <style scoped>
 .mobile {
   display: none;
-}
-.sticky-content {
-  min-height: 100vh;
-  padding-bottom: 250px;
 }
 .container {
   width: 80vw;

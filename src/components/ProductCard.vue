@@ -98,7 +98,7 @@
 
 <script>
 export default {
-  name: "ProducdCart",
+  name: "ProducdCard",
   props: {
     initialProduct: {
       type: Object,

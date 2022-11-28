@@ -20,7 +20,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "./ProductCard";
 
 export default {
-  name: "ProducdCartList",
+  name: "ProducdCardList",
   components: { Slick, ProductCard },
   props: {
     discountProdects: {

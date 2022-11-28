@@ -50,6 +50,8 @@
           </div>
         </div>
       </div>
+
+      <i class="el-icon-shopping-cart-2 cart" @click="drawer = true"></i>
     </div>
     <!-- PC的橫幅fixed -->
     <div class="header-util">
@@ -301,7 +303,6 @@ const dummyData = {
     },
   ],
 };
-
 import QuickOrder from "./QuickOrder.vue";
 
 export default {
@@ -473,6 +474,20 @@ export default {
   .header-util,
   .category {
     display: none;
+  }
+  .cart {
+    all: unset;
+    font-size: 35px;
+    color: var(--black);
+    background-color: var(--white);
+    border: 10px solid var(--white);
+    border-radius: 50%;
+    opacity: 0.8;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 9999;
   }
   .phone-wrap {
     all: unset;

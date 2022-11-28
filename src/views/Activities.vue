@@ -1,18 +1,9 @@
 <template>
-  <div class="sticky-footer">
-    <div class="sticky-content">
-      <Header />
-
-      <ActivityCards :initial-activities="activities" />
-    </div>
-    <Footer class="sticky-bottom"> </Footer>
-  </div>
+  <ActivityCards :initial-activities="activities" />
 </template>
 
 
 <script>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer";
 import ActivityCards from "../components/ActivityCards";
 
 const dummyData = {
@@ -38,9 +29,7 @@ const dummyData = {
 export default {
   name: "Activities",
   components: {
-    Header,
     ActivityCards,
-    Footer,
   },
   data() {
     return {
@@ -49,9 +38,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.sticky-content {
-  padding-bottom: 250px;
-}
-</style>

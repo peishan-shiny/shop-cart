@@ -1,39 +1,24 @@
 <template>
-  <div class="sticky-footer">
-    <div class="sticky-content">
-      <Header />
-      <h1 class="content">404 Page Not Found</h1>
-    </div>
-    <Footer class="sticky-bottom"> </Footer>
-  </div>
+  <h1 class="content">404 Page Not Found</h1>
 </template>
 
 
 <script>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer";
-
 export default {
   name: "NotFound",
-  components: {
-    Header,
-    Footer,
-  },
 };
 </script>
 
 <style scoped>
 .content {
+  font-family: "微軟正黑體";
+  font-size: var(--main-font-size);
+  color: var(--main-color);
   width: 80vw;
   margin: 0 auto;
   position: relative;
   top: 200px;
-  font-size: var(--main-font-size);
-  color: var(--main-color);
 }
-/* .sticky-content {
-  padding-bottom: 250px;
-} */
 
 @media screen and (max-width: 480px) {
   .content {

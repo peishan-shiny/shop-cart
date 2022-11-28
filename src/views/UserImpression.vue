@@ -1,50 +1,35 @@
 <template>
-  <div class="sticky-footer">
-    <div class="sticky-content">
-      <Header />
-
-      <div class="container">
-        <h1 class="title">我的會員帳戶</h1>
-        <hr class="title-line" />
-        <Cart />
-        <div class="area">
-          <UserList class="left" />
-          <div class="right">
-            <!-- 心得回顧 -->
-            <div class="right-area">
-              <p class="right-title">心得回顧</p>
-              <el-table :data="tableData" stripe class="impression">
-                <el-table-column prop="user" label="留言人"> </el-table-column>
-                <el-table-column prop="score" label="評分" min-width="150px">
-                  <el-rate v-model="scoreValue"></el-rate>
-                </el-table-column>
-                <el-table-column prop="content" label="內文"> </el-table-column>
-                <el-table-column prop="date" label="留言時間">
-                </el-table-column>
-              </el-table>
-            </div>
-          </div>
+  <div class="container">
+    <h1 class="title">我的會員帳戶</h1>
+    <hr class="title-line" />
+    <div class="area">
+      <UserList class="left" />
+      <div class="right">
+        <!-- 心得回顧 -->
+        <div class="right-area">
+          <p class="right-title">心得回顧</p>
+          <el-table :data="tableData" stripe class="impression">
+            <el-table-column prop="user" label="留言人"> </el-table-column>
+            <el-table-column prop="score" label="評分" min-width="150px">
+              <el-rate v-model="scoreValue"></el-rate>
+            </el-table-column>
+            <el-table-column prop="content" label="內文"> </el-table-column>
+            <el-table-column prop="date" label="留言時間"> </el-table-column>
+          </el-table>
         </div>
       </div>
     </div>
-    <Footer class="sticky-bottom"> </Footer>
   </div>
 </template>
 
 
 <script>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer";
 import UserList from "../components/UserList";
-import Cart from "../components/Cart";
 
 export default {
   name: "UserImpression",
   components: {
-    Header,
-    Footer,
     UserList,
-    Cart,
   },
   data() {
     return {
@@ -63,10 +48,6 @@ export default {
 </script>
 
 <style scoped>
-.sticky-content {
-  min-height: 100vh;
-  padding-bottom: 250px;
-}
 .container {
   width: 80vw;
   max-width: 1440px;

@@ -1,20 +1,11 @@
 <template>
-  <div class="sticky-footer">
-    <div class="sticky-content">
-      <Header />
-
-      <div class="container">
-        <ProductDetail :initialProduct="product" />
-        <ProductDetailTwo :initialProduct="product" />
-      </div>
-    </div>
-    <Footer class="sticky-bottom"> </Footer>
+  <div class="container">
+    <ProductDetail :initialProduct="product" />
+    <ProductDetailTwo :initialProduct="product" />
   </div>
 </template>
 
 <script>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer";
 import ProductDetail from "../components/ProductDetail";
 import ProductDetailTwo from "../components/ProductDetailTwo";
 
@@ -1625,8 +1616,6 @@ const jsData = {
 export default {
   name: "Product",
   components: {
-    Header,
-    Footer,
     ProductDetail,
     ProductDetailTwo,
   },
@@ -1660,10 +1649,6 @@ export default {
 </script>
 
 <style scoped>
-.sticky-content {
-  min-height: 100vh;
-  padding-bottom: 250px;
-}
 .container {
   width: 80vw;
   max-width: 1440px;

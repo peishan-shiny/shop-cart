@@ -137,7 +137,7 @@
 
 <script>
 import { Toast } from "../utils/helpers";
-import testAPI from "../apis/test";
+// import testAPI from "../apis/test";
 
 export default {
   name: "SignInForm",
@@ -206,24 +206,24 @@ export default {
       console.log(e.target);
     },
 
-    async fetchTestData() {
-      try {
-        const { data } = await testAPI.getData();
+    // async fetchTestData() {
+    //   try {
+    //     const { data } = await testAPI.getData();
 
-        if (data.status === "error") {
-          throw new Error(data.message);
-        }
-        //拿取資料
-        console.log(data);
-      } catch (error) {
-        //若有錯誤記得將isLoading改成false，才不會是空白頁面
-        this.isProcessing = false;
-        Toast.fire({
-          icon: "warning",
-          title: "資料錯誤請稍後再試！",
-        });
-      }
-    },
+    //     if (data.status === "error") {
+    //       throw new Error(data.message);
+    //     }
+    //     //拿取資料
+    //     console.log(data);
+    //   } catch (error) {
+    //     //若有錯誤記得將isLoading改成false，才不會是空白頁面
+    //     this.isProcessing = false;
+    //     Toast.fire({
+    //       icon: "warning",
+    //       title: "資料錯誤請稍後再試！",
+    //     });
+    //   }
+    // },
   },
 };
 </script>

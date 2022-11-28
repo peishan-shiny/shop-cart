@@ -1,33 +1,22 @@
 <template>
-  <div class="sticky-footer">
-    <div class="sticky-content">
-      <Header />
-
-      <div class="container">
-        <h1 class="title">精選文章</h1>
-        <hr class="title-line" />
-        <div class="area">
-          <ArticleList class="left" />
-          <ArticleMain class="right" />
-        </div>
-      </div>
+  <div class="container">
+    <h1 class="title">精選文章</h1>
+    <hr class="title-line" />
+    <div class="area">
+      <ArticleList class="left" />
+      <ArticleMain class="right" />
     </div>
-    <Footer class="sticky-bottom"> </Footer>
   </div>
 </template>
 
 
 <script>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer";
 import ArticleList from "../components/ArticleList";
 import ArticleMain from "../components/ArticleMain";
 
 export default {
   name: "Articles",
   components: {
-    Header,
-    Footer,
     ArticleList,
     ArticleMain,
   },
@@ -38,10 +27,6 @@ export default {
 </script>
 
 <style scoped>
-.sticky-content {
-  min-height: 100vh;
-  padding-bottom: 250px;
-}
 .container {
   width: 80vw;
   max-width: 1440px;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <i class="el-icon-shopping-cart-2 cart"></i>
+    <i class="el-icon-shopping-cart-2 cart" @click="drawer = true"></i>
   </div>
 </template>
 
@@ -16,12 +16,12 @@ export default {
 </script>
 
 <style scoped>
-/* >480px 需要隱藏嗎? */
 .cart {
   display: none;
 }
 @media screen and (max-width: 480px) {
   .cart {
+    all: unset;
     font-size: 35px;
     color: var(--black);
     background-color: var(--white);
@@ -30,7 +30,7 @@ export default {
     opacity: 0.8;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
     position: fixed;
-    top: 150px;
+    top: 100px;
     right: 20px;
     z-index: 9999;
   }
