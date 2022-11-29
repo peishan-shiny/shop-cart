@@ -1,6 +1,6 @@
 <template>
   <div>
-    <i class="el-icon-shopping-cart-2 cart" @click="drawer = true"></i>
+    <i class="el-icon-shopping-cart-2 cart"></i>
   </div>
 </template>
 
