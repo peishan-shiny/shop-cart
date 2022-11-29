@@ -165,19 +165,18 @@
           <router-link to="/contact" class="text-white">聯絡我們</router-link>
         </li>
       </ul>
-    </div>
-
-    <div v-if="isUpScroll" class="footer-bottom">
-      <div class="footer-bottom-inner">
-        <router-link to="/store" class="text-white"
-          ><i class="footer-bottom-icon el-icon-location"></i
-        ></router-link>
-        <router-link to="/home" class="text-white"
-          ><i class="footer-bottom-icon el-icon-s-home"></i
-        ></router-link>
-        <router-link to="/user" class="text-white"
-          ><i class="footer-bottom-icon el-icon-user-solid"></i
-        ></router-link>
+      <div v-if="isUpScroll" class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <router-link to="/store" class="text-white"
+            ><i class="footer-bottom-icon el-icon-location"></i
+          ></router-link>
+          <router-link to="/home" class="text-white"
+            ><i class="footer-bottom-icon el-icon-s-home"></i
+          ></router-link>
+          <router-link to="/user" class="text-white"
+            ><i class="footer-bottom-icon el-icon-user-solid"></i
+          ></router-link>
+        </div>
       </div>
     </div>
   </footer>
@@ -409,6 +408,9 @@ export default {
 * {
   font-family: "微軟正黑體";
 }
+.footer-bottom {
+  display: none;
+}
 .footer {
   background-color: var(--main-color);
   padding: 3rem 1.5rem;
@@ -526,6 +528,7 @@ export default {
   @media screen and (max-width: 480px) {
     /* 行動版的fix */
     .footer-bottom {
+      all: unset;
       background-color: var(--sec-color);
       padding: 0.5rem 0;
       position: fixed;
