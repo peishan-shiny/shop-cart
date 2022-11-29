@@ -322,7 +322,7 @@ export default {
   computed: {
     drawerWidth() {
       if (this.isDevice) {
-        return "100%";
+        return "90%";
       }
       return "60%";
     },

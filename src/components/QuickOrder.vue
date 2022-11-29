@@ -17,13 +17,13 @@
           ></el-input-number>
           <div class="money">
             <p>
-              <span>數量 X 單價：{{ item.num }}</span
+              <span>{{ item.num }}</span
               ><span> X</span> ${{
                 item.discount ? item.price * item.discount : item.price
               }}
             </p>
             <p class="sum">
-              ${{
+              小計：${{
                 item.num *
                 (item.discount ? item.price * item.discount : item.price)
               }}
@@ -243,6 +243,10 @@ export default {
   padding-right: 1rem;
   cursor: pointer;
 }
+.name {
+  font-size: var(--sec-font-size);
+  font-weight: 700;
+}
 .name,
 .format {
   margin-bottom: 1rem;
@@ -276,5 +280,20 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  .quick-order {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .content {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+    border-bottom: 1px solid var(--black);
+  }
+  .descript {
+    all: unset;
+    margin: 1rem 0;
+  }
 }
 </style>

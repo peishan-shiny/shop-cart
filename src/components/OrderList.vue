@@ -21,15 +21,22 @@
               <p class="format">規格：{{ item.format[0].name }}</p>
             </div>
           </div>
-          <div class="unit-price">
-            <p class="price">
-              NT${{ item.discount ? item.price * item.discount : item.price }}
-            </p>
-            <p class="original-price" v-if="item.discount">
-              NT${{ item.price }}
-            </p>
+
+          <div class="mobil-style">
+            <p class="mobil-text">單價</p>
+            <div class="price-wrap">
+              <p class="price">
+                NT${{ item.discount ? item.price * item.discount : item.price }}
+              </p>
+              <p class="original-price" v-if="item.discount">
+                NT${{ item.price }}
+              </p>
+            </div>
           </div>
-          <div class="amount">{{ item.num }}</div>
+          <div class="mobil-style">
+            <p class="mobil-text">數量</p>
+            <div class="amount">{{ item.num }}</div>
+          </div>
           <div class="sum">
             NT${{
               item.num *
@@ -388,6 +395,9 @@ export default {
 * {
   font-family: "微軟正黑體";
 }
+.mobil-text {
+  display: none;
+}
 .area {
   margin-bottom: 5rem;
 }
@@ -417,6 +427,7 @@ export default {
   height: 150px;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--black);
+  margin: 1rem 0;
 }
 .img {
   height: 100%;
@@ -429,8 +440,7 @@ export default {
   line-height: 2rem;
   width: 55%;
 }
-.unit-price,
-.amount,
+.mobil-style,
 .sum {
   width: 15%;
   align-self: center;
@@ -465,9 +475,9 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .order-list {
-    display: flex;
-    flex-direction: row;
+  .mobil-text {
+    all: unset;
+    margin-right: 1rem;
   }
   .title {
     font-size: var(--sec-font-size);
@@ -484,6 +494,7 @@ export default {
     color: var(--black);
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--black);
+    margin: 1rem 0;
   }
   .img {
     height: 100px;
@@ -494,11 +505,17 @@ export default {
     line-height: 2rem;
     white-space: nowrap;
   }
-  .unit-price,
-  .amount,
+  .mobil-style {
+    all: unset;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+  }
   .sum {
     all: unset;
-    line-height: 2rem;
+    text-align: end;
   }
 }
 </style>
