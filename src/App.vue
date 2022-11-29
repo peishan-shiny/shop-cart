@@ -49,6 +49,7 @@ export default {
       isUpScroll: false,
     };
   },
+  //監聽height的值，判斷是否上滑，更改isUpScroll的值，使元件隱藏或出現
   watch: {
     height(newHeight, oldHeight) {
       // console.log(newHeight, oldHeight);
@@ -60,6 +61,7 @@ export default {
     },
   },
   methods: {
+    // 給height值
     scrollToTop() {
       const scrollTop =
         window.pageYOffset ||
@@ -76,6 +78,7 @@ export default {
     //   console.log(this.height);
     // },
   },
+  // 在mounted裡監聽 "scroll" 後面接一個function
   mounted() {
     window.addEventListener("scroll", this.scrollToTop);
   },

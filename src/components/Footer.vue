@@ -374,17 +374,7 @@ export default {
     this.fetchData();
     window.addEventListener("resize", this.isMobile);
   },
-  watch: {
-    // height: {
-    //   handler(newName, oldName) {
-    //     if (newName > oldName) {
-    //       this.isUpScroll = false;
-    //     } else {
-    //       this.isUpScroll = true;
-    //     }
-    //   },
-    // },
-  },
+
   methods: {
     // 判斷裝置的方法
     isMobile() {

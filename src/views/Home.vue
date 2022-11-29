@@ -1241,8 +1241,6 @@ export default {
         { id: 1, url: require("../assets/images/home-01.jpg") },
         { id: 2, url: require("../assets/images/home-02.jpeg") },
       ],
-      // height: 0,
-      // isUpScroll: false,
       discountProdects: dataDiscount,
       newPraducts: dataNew,
     };
@@ -1250,38 +1248,12 @@ export default {
   created() {
     this.imgLoad();
   },
-  // watch: {
-  //   height(newHeight, oldHeight) {
-  //     // console.log(newHeight, oldHeight);
-  //     if (newHeight > oldHeight) {
-  //       this.isUpScroll = false;
-  //     } else {
-  //       this.isUpScroll = true;
-  //     }
-  //   },
-  // },
   methods: {
     imgLoad() {
       this.$nextTick(() => {
         this.bannerHeight = this.$refs.imgHeight[0].height;
       });
     },
-
-    // scrollToTop() {
-    //   const scrollTop =
-    //     window.pageYOffset ||
-    //     document.documentElement.scrollTop ||
-    //     document.body.scrollTop;
-
-    //   this.height = scrollTop;
-    //   // console.log(scrollTop);
-    // },
-
-    // 判斷是否上滑
-    // scroll(e) {
-    //   this.height = e.target.scrollTop;
-    //   console.log(this.height);
-    // },
   },
   mounted() {
     window.addEventListener(
@@ -1291,8 +1263,6 @@ export default {
       },
       false
     );
-
-    // window.addEventListener("scroll", this.scrollToTop);
   },
 };
 </script>
