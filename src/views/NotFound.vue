@@ -1,5 +1,5 @@
 <template>
-  <h1 class="content">404 Page Not Found**</h1>
+  <h1 class="content">404 Page Not Found$$</h1>
 </template>
 
 
