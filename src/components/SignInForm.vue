@@ -80,6 +80,20 @@
                 required
               ></el-input>
             </div>
+            <v-select
+              :options="paginated"
+              :filterable="false"
+              @open="onOpen"
+              @close="onClose"
+              @search="(query) => (search = query)"
+              style="width:200px"
+            >
+              <template #list-footer>
+                <li v-show="hasNextPage" ref="load" class="loader">
+                  Loading more options...
+                </li>
+              </template>
+            </v-select>
             <div class="form-content">
               <el-select
                 v-model="gender"
@@ -137,7 +151,7 @@
 
 <script>
 import { Toast } from "../utils/helpers";
-// import testAPI from "../apis/test";
+import  countries  from "../apis/data.js";
 
 export default {
   name: "SignInForm",
@@ -163,12 +177,51 @@ export default {
       agreeChecked: false,
       tabActive: "login",
       isProcessing: false,
+      observer: null,
+      limit: 10,
+      search: '',
     };
   },
+  computed:{
+    filtered() {
+      return countries.filter((country) => country.includes(this.search))
+    },
+    paginated() {
+      return this.filtered.slice(0, this.limit)
+    },
+    hasNextPage() {
+      return this.paginated.length < this.filtered.length
+    },
+  },
+  mounted() {
+    /**
+     * You could do this directly in data(), but since these docs
+     * are server side rendered, IntersectionObserver doesn't exist
+     * in that environment, so we need to do it in mounted() instead.
+     */
+    this.observer = new IntersectionObserver(this.infiniteScroll)
+  },
   created() {
-    this.fetchTestData();
   },
   methods: {
+    async onOpen() {
+      if (this.hasNextPage) {
+        await this.$nextTick()
+        this.observer.observe(this.$refs.load)
+      }
+    },
+    onClose() {
+      this.observer.disconnect()
+    },
+    async infiniteScroll([{ isIntersecting, target }]) {
+      if (isIntersecting) {
+        const ul = target.offsetParent
+        const scrollTop = target.offsetParent.scrollTop
+        this.limit += 10
+        await this.$nextTick()
+        ul.scrollTop = scrollTop
+      }
+    },
     handleSumit(e) {
       if (!this.name) {
         Toast.fire({
@@ -205,25 +258,6 @@ export default {
       //串接API，將資料子層傳給父層
       console.log(e.target);
     },
-
-    // async fetchTestData() {
-    //   try {
-    //     const { data } = await testAPI.getData();
-
-    //     if (data.status === "error") {
-    //       throw new Error(data.message);
-    //     }
-    //     //拿取資料
-    //     console.log(data);
-    //   } catch (error) {
-    //     //若有錯誤記得將isLoading改成false，才不會是空白頁面
-    //     this.isProcessing = false;
-    //     Toast.fire({
-    //       icon: "warning",
-    //       title: "資料錯誤請稍後再試！",
-    //     });
-    //   }
-    // },
   },
 };
 </script>

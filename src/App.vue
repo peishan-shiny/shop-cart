@@ -24,8 +24,9 @@
 
       <div class="sticky-content">
         <Header />
-
-        <router-view />
+        <keep-alive>
+          <router-view />
+        </keep-alive>
       </div>
 
       <Footer class="sticky-bottom" :isUpScroll="isUpScroll"> </Footer>
