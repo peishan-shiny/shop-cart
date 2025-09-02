@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">聯絡我們</h1>
+    <h1 class="title">聯絡我們modify</h1>
     <hr class="title-line" />
     <form @submit.stop.prevent="handleSumit" class="contact-form">
       <!-- 標題 -->
